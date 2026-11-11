@@ -817,6 +817,7 @@ pre.msg {
   const lojaPor = slug => CONFIG.lojas.find(l => l.slug === slug) || null;
   const lojaRotulo = l => l ? `Loja parceira da rede · ${l.bairro}${l.ref ? ` (${l.ref})` : ''}` : '';
   const lojaCompleta = l => l ? `${lojaRotulo(l)} — ${l.endereco}` : '';
+  const lojaCurta = l => l ? `${l.bairro}${l.ref ? ` (${l.ref})` : ''}` : '';
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const optVal = o => Array.isArray(o) ? o[0] : o;
   const optLabel = o => Array.isArray(o) ? o[1] : o;
@@ -901,21 +902,26 @@ pre.msg {
     const total = state.attempts[0].total;
     return notas.length > 1 ? `${melhor()} de ${total} (tentativas: ${notas.join(', ')})` : `${notas[0]} de ${total}`;
   }
+  function partesEstudo(a) {
+    if (!ESTUDANDO(a)) return { nivel: a.nivel || '', detalhe: '' };
+    const onde = [a.curso, a.instituicao, a.serie].filter(Boolean).join(' · ');
+    const como = [a.turno ? `aulas: ${a.turno.toLowerCase()}` : '', a.frequenta === 'sim' ? 'frequentando' : ''].filter(Boolean).join(' · ');
+    return { nivel: a.nivel || '', detalhe: [onde, como].filter(Boolean).join(' · ') };
+  }
   function dadosResumo() {
     const a = state.answers;
     const loja = lojaPor(a.loja);
-    const estudo = ESTUDANDO(a)
-      ? [a.nivel, a.curso, a.instituicao, a.serie, a.turno ? `aulas: ${a.turno.toLowerCase()}` : '', a.frequenta === 'sim' ? 'frequentando' : ''].filter(Boolean).join(' · ')
-      : (a.nivel || '');
+    const est = partesEstudo(a);
     const exp = (rotuloDe('exp', a.exp) || '') + (a.expDetalhe ? ` (${a.expDetalhe})` : '');
     const concluidos = CORE.filter(m => state.modules[m.id]).length;
     return [
       ['Nome', a.nome || ''],
-      ['Loja', lojaCompleta(loja)],
-      ['Idade', a.idade === '16-17' ? '16 ou 17 anos (o responsável assina o termo junto)' : (a.idade === '18+' ? '18 anos ou mais' : '')],
-      ['Bairro', a.bairro || ''],
+      ['Loja', loja ? `Loja parceira da rede · ${lojaCurta(loja)}` : ''],
+      ['Endereço da loja', loja ? loja.endereco : ''],
       ['Distância até a loja', distanciaTexto(loja, a.lojaKm)],
-      ['Estudo', estudo],
+      ['Bairro', a.bairro || ''],
+      ['Idade', a.idade === '16-17' ? '16 ou 17 anos (o responsável assina o termo junto)' : (a.idade === '18+' ? '18 anos ou mais' : '')],
+      ['Estudo', [est.nivel, est.detalhe].filter(Boolean).join(' · ')],
       ['Experiência', exp],
       ['Acessórios', a.acessorios || ''],
       ['Maquiagem', a.maquiagem || ''],
@@ -926,31 +932,69 @@ pre.msg {
       ['Avisos de vagas de parceiros', a.parceiros ? 'sim' : 'não']
     ];
   }
+  // Mensagem do WhatsApp para quem contrata: o que decide vem primeiro (nome, nota, loja, distância),
+  // depois o que importa para a entrevista. Linhas curtas, cabem na tela do celular e ficam boas no computador.
+  // Nome, Loja, Avaliação, Enviado em e Código ficam como "Rótulo: valor" para a conferência do código.
   function montarMensagem() {
-    const linhas = dadosResumo();
-    const get = k => (linhas.find(l => l[0] === k) || [k, ''])[1];
+    const a = state.answers;
+    const loja = lojaPor(a.loja);
     const enviado = dataHora(new Date());
-    const cod = codigo(get('Nome'), get('Loja'), get('Avaliação'), enviado);
-    const bloco = ks => ks.map(k => `${k}: ${get(k)}`).join('\n');
-    return [
-      '*Candidatura a estágio*',
-      bloco(['Nome', 'Loja']),
+    const av = linhaAvaliacao();
+    const cod = codigo(a.nome || '', lojaCurta(loja), av, enviado);
+    const sep = '━━━━━━━━━━━━━━';
+    const t = state.attempts[0];
+    const ref = t ? (t.nota >= CONFIG.notaMinima ? `✅ _Acima da referência (${CONFIG.notaMinima} de ${t.total})_` : `➖ _Abaixo da referência (${CONFIG.notaMinima} de ${t.total}). A nota não elimina._`) : '';
+    const dist = loja && typeof a.lojaKm === 'number'
+      ? `uns ${kmTexto(a.lojaKm)}${minutosAPe(a.lojaKm) <= 90 ? ` · ${minutosAPe(a.lojaKm)} min a pé` : ''}`
+      : 'não informada';
+    const onde = ESTUDANDO(a) ? [a.curso, a.instituicao, a.serie].filter(Boolean).join(' · ') : '';
+    const aulas = ESTUDANDO(a) ? [a.turno, a.frequenta === 'sim' ? 'frequentando' : ''].filter(Boolean).join(' · ') : '';
+    const concluidos = CORE.filter(m => state.modules[m.id]).length;
+    const site = /\.github\.io$/i.test(location.hostname) ? location.hostname : '';
+    const L = [
+      '*CANDIDATURA · ESTÁGIO EM VENDAS*',
+      '_Lojas parceiras da rede_',
       '',
-      '*Perguntas*',
-      bloco(['Bairro', 'Distância até a loja', 'Idade', 'Estudo', 'Experiência', 'Acessórios', 'Maquiagem']),
+      `👤 *Nome:* ${a.nome || '—'}`,
+      `⭐ *Avaliação:* ${av}`,
+      ref,
+      `📍 *Loja:* ${lojaCurta(loja) || '—'}`,
+      loja ? loja.endereco : '',
+      `🚶 *Distância:* ${dist}`,
       '',
-      '*Minicurso e avaliação*',
-      bloco(['Minicurso', 'Vídeos da loja', 'Avaliação']),
+      sep,
+      '*PARA A ENTREVISTA*',
+      `🎓 *Estudo:* ${a.nivel || '—'}`,
+      onde,
+      aulas ? `🕘 *Aulas:* ${aulas}` : '',
+      `💼 *Experiência:* ${rotuloDe('exp', a.exp) || '—'}`,
+      a.expDetalhe || '',
+      `💍 *Acessórios:* ${a.acessorios || '—'}`,
+      `💄 *Maquiagem:* ${a.maquiagem || '—'}`,
+      `🏠 *Bairro:* ${a.bairro || '—'}`,
+      `🎂 *Idade:* ${a.idade === '16-17' ? '16 ou 17 anos' : (a.idade === '18+' ? '18 anos ou mais' : '—')}`,
+      a.idade === '16-17' ? '⚠️ _O responsável assina o termo junto._' : '',
       '',
-      '*Permissões*',
-      bloco(['Outras vagas das lojas', 'Avisos de vagas de parceiros']),
+      `📚 *Minicurso:* ${concluidos} de ${CORE.length} módulos`,
+      `🎬 *Vídeos:* ${state.modules.v ? 'assistidos' : 'não marcados'}`,
       '',
+      '*AUTORIZAÇÕES*',
+      `Outras vagas das lojas: ${a.outrasVagas ? 'sim' : 'não'}`,
+      `Vagas em comércios parceiros: ${a.parceiros ? 'sim' : 'não'}`,
+      sep,
       `Enviado em: ${enviado}`,
-      `Código: ${cod}`
-    ].join('\n');
+      `Código: ${cod}`,
+      site ? `_Para conferir: ${site} › Para a equipe da loja_` : ''
+    ];
+    // tira as linhas de campos opcionais que ficaram vazias, sem juntar os blocos
+    const out = [];
+    L.forEach((x, k) => { if (x !== '' || (out.length && out[out.length - 1] !== '' && L[k + 1] !== undefined)) out.push(x); });
+    while (out[out.length - 1] === '') out.pop();
+    return out.join('\n');
   }
   function conferir(texto) {
-    const linhas = String(texto || '').split(/\r?\n/).map(norm);
+    // ignora ícones e marcas do começo da linha (👤, ⭐, 📍...), que o WhatsApp mantém ao copiar
+    const linhas = String(texto || '').split(/\r?\n/).map(x => norm(x).replace(/^[^\p{L}]+/u, ''));
     const campo = rotulo => {
       const l = linhas.find(x => x.toLowerCase().startsWith(rotulo.toLowerCase() + ':'));
       return l ? l.slice(rotulo.length + 1).trim() : null;
