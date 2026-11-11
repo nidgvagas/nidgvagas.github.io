@@ -396,13 +396,13 @@ pre.msg {
         <details class="priv" id="privacidade">
           <summary>Aviso de privacidade</summary>
           <div class="stack-s">
-            <p><strong>Quem cuida dos seus dados:</strong> <span id="privEmpresa">a empresa responsável pela loja que você escolher no fim</span>.</p>
+            <p><strong>Quem cuida dos seus dados:</strong> <span id="privEmpresa">a rede de lojas parceiras, que recebe as candidaturas por um único WhatsApp</span>.</p>
             <p><strong>O que pedimos:</strong> nome, bairro, faixa de idade, dados de estudo, experiência, afinidade com acessórios e maquiagem, e o resultado do minicurso e da avaliação.</p>
             <p><strong>Sua localização:</strong> no fim, se você deixar, o celular usa a sua localização só para calcular a distância até as lojas. Ela não é enviada para a loja nem fica guardada. Vai na mensagem só a loja que você escolher e a distância aproximada até ela.</p>
             <p><strong>Para quê:</strong> avaliar sua candidatura ao estágio e falar com você sobre ela.</p>
             <p><strong>Onde ficam:</strong> esta página não envia suas respostas para nenhum servidor. Elas ficam guardadas só neste celular até você mandar a mensagem pelo WhatsApp para a loja. Depois, ficam na conversa com a loja.</p>
             <p><strong>Por quanto tempo:</strong> se você não for chamada(o), a loja apaga suas respostas em até <span id="privRetencao">6 meses</span>, a menos que você aceite ser chamada(o) para outras vagas.</p>
-            <p><strong>Seus direitos:</strong> pedir cópia, correção ou exclusão dos seus dados quando quiser, pelo WhatsApp da loja.</p>
+            <p><strong>Seus direitos:</strong> pedir cópia, correção ou exclusão dos seus dados quando quiser, pelo mesmo WhatsApp.</p>
             <p><strong>Decisão:</strong> ninguém é eliminado pela nota da avaliação. Quem decide é uma pessoa da equipe.</p>
             <p><strong>Fotos:</strong> as fotos das aulas vêm do Pexels, um banco de imagens gratuito, e são carregadas de lá.</p>
             <p id="privYoutube" hidden><strong>Vídeos:</strong> os vídeos indicados são do YouTube. Quando você toca um deles, o YouTube recebe esse acesso.</p>
@@ -457,10 +457,10 @@ pre.msg {
     <p class="eyebrow">Etapa 3 de 4</p>
     <h2 class="h2" id="h-avaliacao" tabindex="-1">Avaliação rápida</h2>
     <div id="avaliacaoIntro" class="stack">
-      <p>São <strong id="avTotal">10</strong> perguntas sorteadas, quase todas com situações reais de loja: atender, vender, lidar com clientes, os vídeos indicados e a rotina no estágio. Cada tentativa traz perguntas novas, então não adianta decorar as respostas de outra pessoa.</p>
+      <p>São <strong id="avTotal">10</strong> perguntas sorteadas, quase todas com situações reais de loja: atender, vender, lidar com clientes, os vídeos indicados e a rotina no estágio. Cada pessoa recebe perguntas diferentes, então não adianta decorar as respostas de outra pessoa.</p>
       <ul class="trust">
         <li>Não tem tempo limite.</li>
-        <li>Você tem até <span id="avMax">3</span> tentativas, e a loja vê todas.</li>
+        <li><strong>Você tem uma tentativa só.</strong> Leia com calma antes de responder. <span id="avMax" hidden>1</span></li>
         <li>A nota ajuda a loja a te conhecer. Quem decide é uma pessoa da equipe.</li>
       </ul>
       <p class="muted small" id="avTentativas"></p>
@@ -495,6 +495,7 @@ pre.msg {
     <h2 class="h2" id="h-envio" tabindex="-1">Escolha a loja e envie</h2>
     <div class="panel stack-s" id="lojaBox">
       <p class="h3">Lojas perto de você</p>
+      <p class="small muted">Todas são lojas parceiras da rede, com a mesma vaga de estágio.</p>
       <p class="small muted" id="lojaGeoTexto">Toque no botão para ver as nossas lojas da mais perto para a mais longe. Sua localização só é usada aqui no celular para calcular a distância.</p>
       <button type="button" class="btn btn-primary btn-block" id="btnPerto">Ver as lojas mais perto de mim</button>
       <p class="small" id="lojaGeoStatus" role="status"></p>
@@ -606,18 +607,31 @@ pre.msg {
 
   /* ---------- Configuração do piloto ---------- */
   const CONFIG = {
-    versao: '0.6 (piloto)',
+    versao: '0.7 (piloto)',
     prazoResposta: 'em até 3 dias úteis',
     retencao: '6 meses',
     // Quantas perguntas a avaliação sorteia de cada tema (m2..m5 = módulos; v = vídeos da loja).
     composicao: { m2: 3, m3: 2, m4: 1, m5: 1, v: 3 },
     notaMinima: 7,
-    maxTentativas: 3,
+    maxTentativas: 1,
+    // Um único WhatsApp recebe as candidaturas de todas as lojas.
+    whatsappCentral: '5571996478222',
+    // Lojas parceiras da rede. Endereço tirado das notas fiscais (NFC-e) de cada loja no Painel de controle NIDG.
+    // lat/lng conferidos no Google Maps pelo endereço; "aprox" = posição do bairro/rua, sem o número exato.
     lojas: [
-      // lat/lng: posição da loja no mapa (graus decimais). Sem elas, a loja aparece na lista, mas sem distância.
-      { slug: 'boca-do-rio', marca: 'Via Bijux', bairro: 'Boca do Rio', endereco: 'Rua Hélio Machado', empresa: 'NID Bijuterias Ltda', whatsapp: '', lat: null, lng: null },
-      { slug: 'cajazeiras-via-bijux', marca: 'Via Bijux', bairro: 'Cajazeiras', endereco: '', empresa: '', whatsapp: '', lat: null, lng: null },
-      { slug: 'cajazeiras-ser-linnda', marca: 'Ser + Linnda', bairro: 'Cajazeiras', endereco: '', empresa: '', whatsapp: '', lat: null, lng: null }
+      { slug: 'boca-do-rio', bairro: 'Boca do Rio', endereco: 'Rua Hélio Machado, 19', lat: -12.97986, lng: -38.43357 },
+      { slug: 'cajazeiras-linnda', bairro: 'Cajazeiras', ref: 'nº 10', endereco: 'Estrada do Coqueiro Grande, 10', lat: -12.90586, lng: -38.39851 },
+      { slug: 'cajazeiras-bijux', bairro: 'Cajazeiras', ref: 'nº 19', endereco: 'Estrada do Coqueiro Grande, 19', lat: -12.90424, lng: -38.40100 },
+      { slug: 'castelo-branco', bairro: 'Castelo Branco', endereco: 'Avenida Genário de Carvalho, 17', lat: -12.90478, lng: -38.44158, aprox: true },
+      { slug: 'cosme-de-farias', bairro: 'Cosme de Farias', endereco: 'Rua Cosme de Farias, 183', lat: -12.98073, lng: -38.48905 },
+      { slug: 'fazenda-grande', bairro: 'Fazenda Grande do Retiro', endereco: 'Rua Mello Moraes Filho, 186', lat: -12.94403, lng: -38.47617 },
+      { slug: 'itinga', bairro: 'Itinga (Lauro de Freitas)', endereco: 'Rua Vereador Jone Kiss, 25', lat: -12.89718, lng: -38.33763, aprox: true },
+      { slug: 'paripe', bairro: 'Paripe', endereco: 'Segunda Rotatória de Paripe, 3', lat: -12.84097, lng: -38.46361, aprox: true },
+      { slug: 'periperi', bairro: 'Periperi', endereco: 'Rua Ambrósio Calmon, 3', lat: -12.86485, lng: -38.47453 },
+      { slug: 'sussuarana', bairro: 'Sussuarana', endereco: 'Avenida Ulysses Guimarães, 4523', lat: -12.93595, lng: -38.43862 },
+      { slug: 'sao-caetano', bairro: 'São Caetano', endereco: 'Estrada de Campinas, 425', lat: -12.92346, lng: -38.46963 },
+      { slug: 'sao-cristovao', bairro: 'São Cristóvão', endereco: 'Avenida Aliomar Baleeiro, 10', lat: -12.91009, lng: -38.36548 },
+      { slug: 'tancredo-neves', bairro: 'Tancredo Neves', endereco: 'Rua Bahia, 75', lat: -12.94610, lng: -38.44759 }
     ],
     // Vídeo de cada módulo: link externo (abre fora da página) ou arquivo publicado junto com a página (toca aqui).
     videos: { m1: '', m2: '', m3: '', m4: '', m5: '' },
@@ -801,7 +815,8 @@ pre.msg {
   function clearSaved() { try { localStorage.removeItem(KEY); } catch (e) { } }
 
   const lojaPor = slug => CONFIG.lojas.find(l => l.slug === slug) || null;
-  const lojaRotulo = l => l ? `${l.marca} · ${l.bairro}` : '';
+  const lojaRotulo = l => l ? `Loja parceira da rede · ${l.bairro}${l.ref ? ` (${l.ref})` : ''}` : '';
+  const lojaCompleta = l => l ? `${lojaRotulo(l)} — ${l.endereco}` : '';
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const optVal = o => Array.isArray(o) ? o[0] : o;
   const optLabel = o => Array.isArray(o) ? o[1] : o;
@@ -884,7 +899,7 @@ pre.msg {
     const notas = state.attempts.map(t => t.nota);
     if (!notas.length) return 'não feita';
     const total = state.attempts[0].total;
-    return `${melhor()} de ${total} (tentativas: ${notas.join(', ')})`;
+    return notas.length > 1 ? `${melhor()} de ${total} (tentativas: ${notas.join(', ')})` : `${notas[0]} de ${total}`;
   }
   function dadosResumo() {
     const a = state.answers;
@@ -896,7 +911,7 @@ pre.msg {
     const concluidos = CORE.filter(m => state.modules[m.id]).length;
     return [
       ['Nome', a.nome || ''],
-      ['Loja', lojaRotulo(loja)],
+      ['Loja', lojaCompleta(loja)],
       ['Idade', a.idade === '16-17' ? '16 ou 17 anos (o responsável assina o termo junto)' : (a.idade === '18+' ? '18 anos ou mais' : '')],
       ['Bairro', a.bairro || ''],
       ['Distância até a loja', distanciaTexto(loja, a.lojaKm)],
@@ -1018,7 +1033,7 @@ pre.msg {
       li.querySelector('[data-sr]').textContent = `: ${st === 'done' ? 'concluído' : (st === 'current' ? 'em andamento' : 'a fazer')}`;
     });
     const loja = lojaPor(state.answers.loja);
-    $('topLoja').textContent = loja ? `· ${lojaRotulo(loja)}` : '';
+    $('topLoja').textContent = loja ? `· ${loja.bairro}${loja.ref ? ` (${loja.ref})` : ''}` : '';
   }
 
   /* ---------- Abertura ---------- */
@@ -1036,8 +1051,9 @@ pre.msg {
   function renderInicio() {
     const box = $('inicioLojas');
     const doLink = lojaPor(lojaDoLink);
-    box.innerHTML = `<p class="small muted">Lojas participantes</p><ul class="trust">${CONFIG.lojas.map(l => `<li>${esc(lojaRotulo(l))}${l.endereco ? ` <span class="muted">· ${esc(l.endereco)}</span>` : ''}</li>`).join('')}</ul>`
-      + `<p class="small muted">${doLink ? `Você chegou pelo link da ${esc(lojaRotulo(doLink))}. ` : ''}No fim, você vê as lojas mais perto de você e escolhe para qual mandar.</p>`;
+    const bairros = [...new Set(CONFIG.lojas.map(l => l.bairro))].sort((a, b) => a.localeCompare(b));
+    box.innerHTML = `<p class="small muted">${CONFIG.lojas.length} lojas parceiras da rede, em ${esc(bairros.join(', '))}.</p>`
+      + `<p class="small muted">${doLink ? `Você chegou pelo link da loja de ${esc(doLink.bairro)}. ` : ''}No fim, você vê as lojas mais perto de você e escolhe uma.</p>`;
     const acoes = $('inicioAcoes');
     acoes.innerHTML = '';
     if (temProgresso()) {
@@ -1134,8 +1150,7 @@ pre.msg {
       const b = $('b-' + p.id);
       if (b) b.hidden = !(visivel && a[p.id] === BLOQUEIOS[p.id].valor);
     });
-    const loja = lojaPor(a.loja);
-    $('privEmpresa').textContent = loja && loja.empresa ? loja.empresa : (loja ? `a empresa responsável pela loja ${lojaRotulo(loja)}` : 'a empresa responsável pela loja que você escolher no fim');
+    $('privEmpresa').textContent = `a rede de lojas parceiras, que recebe as candidaturas pelo WhatsApp ${formatarFone(CONFIG.whatsappCentral)}`;
     $('privRetencao').textContent = CONFIG.retencao;
     $('privYoutube').hidden = !CONFIG.embedVideos;
   }
@@ -1497,10 +1512,10 @@ pre.msg {
     $('avTotal').textContent = totalPerguntas();
     $('avMax').textContent = CONFIG.maxTentativas;
     const n = state.attempts.length;
-    $('avTentativas').textContent = n ? `Você já fez ${n} de ${CONFIG.maxTentativas} tentativas. Melhor nota até agora: ${melhor()} de ${state.attempts[0].total}.` : '';
+    $('avTentativas').textContent = n ? `Você já fez a avaliação. Sua nota: ${melhor()} de ${state.attempts[0].total}.` : '';
     const esgotou = n >= CONFIG.maxTentativas;
     $('btnComecarAvaliacao').disabled = esgotou && !state.quiz;
-    $('btnComecarAvaliacao').textContent = state.quiz ? 'Continuar a avaliação' : (esgotou ? 'Tentativas esgotadas' : (n ? 'Começar nova tentativa' : 'Começar a avaliação'));
+    $('btnComecarAvaliacao').textContent = state.quiz ? 'Continuar a avaliação' : (esgotou ? 'Avaliação já feita' : (n ? 'Começar nova tentativa' : 'Começar a avaliação'));
     $('btnAvEnvio').hidden = !n || !!state.quiz;
     if (state.quiz && state.quiz.emAndamento) mostrarQuestao(); else { $('avaliacaoIntro').hidden = false; $('avaliacaoQuestao').hidden = true; }
   }
@@ -1556,7 +1571,7 @@ pre.msg {
     const t = state.attempts[state.attempts.length - 1];
     if (!t) { show('avaliacao'); return; }
     const n = state.attempts.length;
-    $('resTentativa').textContent = `Tentativa ${n} de ${CONFIG.maxTentativas}`;
+    $('resTentativa').textContent = CONFIG.maxTentativas > 1 ? `Tentativa ${n} de ${CONFIG.maxTentativas}` : 'Avaliação';
     $('resNota').innerHTML = `${t.nota} <small>de ${t.total} acertos</small>`;
     const passou = t.nota >= CONFIG.notaMinima;
     const podeTentar = n < CONFIG.maxTentativas;
@@ -1566,7 +1581,7 @@ pre.msg {
       ? '<p><strong>Mandou bem.</strong> Agora é só conferir e enviar para a loja.</p>'
       : (podeTentar
         ? '<p><strong>Faltou pouco.</strong> Reveja os módulos marcados abaixo e tente de novo: as perguntas vão ser outras.</p>'
-        : '<p><strong>Você usou todas as tentativas.</strong> Pode enviar mesmo assim: a loja vê sua melhor nota e decide com você na conversa.</p>');
+        : '<p><strong>Obrigada(o) por fazer a avaliação.</strong> Envie sua candidatura mesmo assim: a nota não elimina ninguém, e a equipe conversa com você.</p>');
     const lista = $('resPorModulo');
     lista.innerHTML = '';
     MODULOS.filter(m => (t.por[m.id] || [0, 0])[1] > 0).forEach(m => {
@@ -1620,7 +1635,7 @@ pre.msg {
   function lojasOrdenadas() {
     const lista = CONFIG.lojas.slice();
     if (distancias) return lista.sort((a, b) => (distancias[a.slug] ?? 1e9) - (distancias[b.slug] ?? 1e9) || a.bairro.localeCompare(b.bairro));
-    return lista.sort((a, b) => a.bairro.localeCompare(b.bairro) || a.marca.localeCompare(b.marca));
+    return lista.sort((a, b) => a.bairro.localeCompare(b.bairro) || a.endereco.localeCompare(b.endereco, 'pt-BR', { numeric: true }));
   }
   function renderLojas() {
     const geoPossivel = 'geolocation' in navigator && CONFIG.lojas.some(temPosicao);
@@ -1630,8 +1645,8 @@ pre.msg {
     if (!state.answers.loja && lojaDoLink) state.answers.loja = lojaDoLink;
     $('lojaOpcoes').innerHTML = lojasOrdenadas().map(l => {
       const km = distancias ? distancias[l.slug] : undefined;
-      const det = typeof km === 'number' ? (minutosAPe(km) <= 90 ? `uns ${kmTexto(km)} · cerca de ${minutosAPe(km)} min a pé` : `uns ${kmTexto(km)}`) : (l.endereco || '');
-      return `<label class="opt"><input type="radio" name="lojaEscolha" value="${esc(l.slug)}"${state.answers.loja === l.slug ? ' checked' : ''}><span><strong>${esc(lojaRotulo(l))}</strong>${det ? `<br><span class="small muted">${esc(det)}</span>` : ''}</span></label>`;
+      const dist = typeof km === 'number' ? (minutosAPe(km) <= 90 ? ` · uns ${kmTexto(km)}, cerca de ${minutosAPe(km)} min a pé` : ` · uns ${kmTexto(km)}`) : '';
+      return `<label class="opt"><input type="radio" name="lojaEscolha" value="${esc(l.slug)}"${state.answers.loja === l.slug ? ' checked' : ''}><span><strong>${esc(l.bairro)}${l.ref ? ` (${esc(l.ref)})` : ''}</strong><br><span class="small muted">${esc(l.endereco)}${esc(dist)}</span></span></label>`;
     }).join('');
   }
   $('lojaOpcoes').addEventListener('change', ev => {
@@ -1654,7 +1669,7 @@ pre.msg {
         if (!state.answers.loja || !lojaPor(state.answers.loja)) state.answers.loja = perto.slug;
         const sel = state.answers.loja;
         state.answers.lojaKm = typeof distancias[sel] === 'number' ? Math.round(distancias[sel] * 10) / 10 : null;
-        st.textContent = `A mais perto de você é a ${lojaRotulo(perto)}.`;
+        st.textContent = `A mais perto de você é a loja de ${perto.bairro}${perto.ref ? ` (${perto.ref})` : ''}, na ${perto.endereco}.`;
         save(); renderEnvio(); renderProgresso();
       }, erro, { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 });
     } catch (e) { erro(); }
@@ -1668,12 +1683,11 @@ pre.msg {
     dl.innerHTML = dadosResumo().map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v || '—')}</dd></div>`).join('');
     mensagemAtual = montarMensagem();
     $('envioMensagem').textContent = mensagemAtual;
-    const loja = lojaPor(state.answers.loja);
-    const num = loja ? soDigitos(loja.whatsapp) : '';
+    const num = soDigitos(CONFIG.whatsappCentral);
     const link = num ? `https://wa.me/${num}?text=${encodeURIComponent(mensagemAtual)}` : `https://wa.me/?text=${encodeURIComponent(mensagemAtual)}`;
     $('btnWhatsApp').href = link;
     $('envioAjuda').textContent = num
-      ? `O WhatsApp abre com a mensagem pronta para a loja, no número ${formatarFone(num)}. Confira e toque em enviar. Se não abrir, copie a mensagem e mande para esse número.`
+      ? `O WhatsApp abre com a mensagem pronta para o número ${formatarFone(num)}, que recebe as candidaturas de todas as lojas. Confira e toque em enviar. Se não abrir, copie a mensagem e mande para esse número.`
       : 'O WhatsApp abre com a mensagem pronta. Escolha o contato da loja e toque em enviar. Se não abrir, copie a mensagem e mande para a loja.';
     $('envioDepoisTexto').textContent = `A loja responde ${CONFIG.prazoResposta}, pelo WhatsApp. Se você for chamada(o), a conversa é presencial, na loja. Lembre: a loja nunca cobra nada.`;
     $('envioDepois').hidden = !state.gerouMensagem || !escolheu;
@@ -1682,7 +1696,7 @@ pre.msg {
   }
   $('btnWhatsApp').addEventListener('click', () => { state.gerouMensagem = true; save(); renderProgresso(); $('envioDepois').hidden = false; });
   $('btnCopiar').addEventListener('click', () => {
-    const ok = () => { $('envioCopiado').textContent = 'Mensagem copiada. Agora é só colar na conversa com a loja.'; state.gerouMensagem = true; save(); renderProgresso(); $('envioDepois').hidden = false; };
+    const ok = () => { $('envioCopiado').textContent = `Mensagem copiada. Agora é só colar na conversa com o número ${formatarFone(CONFIG.whatsappCentral)}.`; state.gerouMensagem = true; save(); renderProgresso(); $('envioDepois').hidden = false; };
     const fallback = () => {
       const r = document.createRange(); r.selectNodeContents($('envioMensagem'));
       const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
@@ -1705,23 +1719,17 @@ pre.msg {
 
   /* ---------- Equipe ---------- */
   function renderEquipe() {
-    $('equipeLinks').innerHTML = CONFIG.lojas.map(l => `<li><span>${esc(lojaRotulo(l))}</span><span class="v">#${esc(l.slug)}</span><span></span></li>`).join('');
+    $('equipeLinks').innerHTML = CONFIG.lojas.map(l => `<li><span>${esc(l.bairro)}${l.ref ? ` (${esc(l.ref)})` : ''}</span><span class="v">#${esc(l.slug)}</span><span></span></li>`).join('');
     $('equipePrazo').textContent = `Responder toda candidatura ${CONFIG.prazoResposta}, mesmo quando a resposta for não.`;
     const pend = [];
-    const semZap = CONFIG.lojas.filter(l => !l.whatsapp).map(lojaRotulo);
-    if (semZap.length) pend.push(`WhatsApp das lojas: ${semZap.join('; ')}.`);
-    const semEmpresa = CONFIG.lojas.filter(l => !l.empresa).map(lojaRotulo);
-    if (semEmpresa.length) pend.push(`Empresa responsável (para o aviso de privacidade): ${semEmpresa.join('; ')}.`);
-    const semEnd = CONFIG.lojas.filter(l => !l.endereco).map(lojaRotulo);
-    if (semEnd.length) pend.push(`Endereço: ${semEnd.join('; ')}.`);
-    const semPos = CONFIG.lojas.filter(l => !temPosicao(l)).map(lojaRotulo);
-    if (semPos.length) pend.push(`Posição no mapa (para mostrar as lojas mais perto da candidata): ${semPos.join('; ')}.`);
+    const aprox = CONFIG.lojas.filter(l => l.aprox).map(l => l.bairro);
+    if (aprox.length) pend.push(`Posição no mapa aproximada (o Google não achou o número exato): ${aprox.join('; ')}. Vale conferir.`);
+    pend.push('Na nota fiscal da loja de Sussuarana o CEP está igual ao da Boca do Rio (40060-000). Vale conferir o cadastro no programa de notas.');
     const semTitulo = CONFIG.videosLoja.filter(v => !v.titulo).length;
     if (semTitulo) pend.push(`Título dos vídeos: ${semTitulo} de ${CONFIG.videosLoja.length} aparecem só como "Vídeo 1", "Vídeo 2".`);
     pend.push('Um vídeo da lista original está privado no YouTube e saiu da página. Se houver outro para o lugar dele, é só mandar o link.');
     pend.push('Vídeo curto sobre a cultura e os combinados das lojas.');
     pend.push('Narração: hoje é uma voz sintética. Fotos: banco gratuito Pexels (no Claude aparecem desenhos no lugar).');
-    pend.push(`Lojas participantes cadastradas: ${CONFIG.lojas.length} de 13.`);
     $('equipePendencias').innerHTML = pend.map(p => `<li>${esc(p)}</li>`).join('');
     $('conferirResultado').innerHTML = '';
   }
