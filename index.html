@@ -1,0 +1,1770 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FAF6F7">
+<title>Estágio em Vendas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700&family=Figtree:wght@400;500;600;700&display=swap">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<style>
+/* Layout: uma coluna estreita, como um cartão de balcão; amostras de cor (swatches) marcam o progresso */
+:root {
+  --paper: #FAF6F7;
+  --surface: #FFFFFF;
+  --ink: #241A1E;
+  --ink-2: #66575E;
+  --line: #E9DEE2;
+  --accent: #A3122A;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #F8E6EA;
+  --ok: #1D6B44;
+  --ok-soft: #E2F1E8;
+  --warn: #8A5200;
+  --warn-soft: #FBEFD8;
+  --mark: #F8CBD5;
+  --sw-1: #D2A08B;
+  --sw-2: #C76A7B;
+  --sw-3: #8E2C51;
+  --sw-4: #A3122A;
+  --display: "Bodoni Moda", "Bodoni 72", Didot, Georgia, serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --t-xs: 0.8125rem;
+  --t-sm: 0.9375rem;
+  --t-md: 1.0625rem;
+  --t-lg: 1.25rem;
+  --t-xl: 1.75rem;
+  --t-2xl: 2.25rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #161013; --surface: #201A1D; --ink: #F5EDF0; --ink-2: #BDAFB5; --line: #3B3035;
+    --accent: #F2647B; --accent-ink: #22070D; --accent-soft: #3B1C24;
+    --ok: #7FD3A2; --ok-soft: #15301F; --warn: #F1C46E; --warn-soft: #33270F; --mark: #7A2B41;
+    --sw-1: #E2B4A0; --sw-2: #E48D9B; --sw-3: #CC5C85; --sw-4: #F2647B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #161013; --surface: #201A1D; --ink: #F5EDF0; --ink-2: #BDAFB5; --line: #3B3035;
+  --accent: #F2647B; --accent-ink: #22070D; --accent-soft: #3B1C24;
+  --ok: #7FD3A2; --ok-soft: #15301F; --warn: #F1C46E; --warn-soft: #33270F; --mark: #7A2B41;
+  --sw-1: #E2B4A0; --sw-2: #E48D9B; --sw-3: #CC5C85; --sw-4: #F2647B;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--t-md)/1.55 var(--body);
+  -webkit-text-size-adjust: 100%;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--paper);
+}
+* { box-sizing: border-box; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Barra de progresso */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--paper); border-bottom: 1px solid var(--line);
+}
+.top-in {
+  max-width: 640px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 10px 12px;
+  display: grid; gap: 10px;
+}
+.brand { display: flex; align-items: baseline; gap: 8px; min-width: 0; font-size: var(--t-xs); color: var(--ink-2); }
+.brand-name { font-weight: 700; color: var(--ink); letter-spacing: 0.06em; text-transform: uppercase; }
+.brand-store { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.swatches { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.swatches li { display: grid; gap: 4px; min-width: 0; }
+.sw-bar { display: block; height: 10px; border-radius: 999px; border: 1.5px solid var(--line); background: transparent; }
+.swatches li:nth-child(1) { --sw: var(--sw-1); }
+.swatches li:nth-child(2) { --sw: var(--sw-2); }
+.swatches li:nth-child(3) { --sw: var(--sw-3); }
+.swatches li:nth-child(4) { --sw: var(--sw-4); }
+.swatches li[data-state="done"] .sw-bar { background: var(--sw); border-color: var(--sw); }
+.swatches li[data-state="current"] .sw-bar { border-color: var(--sw); background: linear-gradient(90deg, var(--sw) 0 35%, transparent 35%); }
+.sw-label { font-size: var(--t-xs); color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.swatches li[data-state="current"] .sw-label { color: var(--ink); font-weight: 600; }
+
+/* Página */
+.wrap {
+  max-width: 640px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px 56px;
+}
+.view { display: grid; gap: 20px; }
+.view > * { min-width: 0; }
+.eyebrow { font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.display { font-family: var(--display); font-weight: 700; font-size: var(--t-2xl); line-height: 1.08; letter-spacing: -0.01em; }
+.h2 { font-family: var(--display); font-weight: 700; font-size: var(--t-xl); line-height: 1.15; }
+.h3 { font-size: var(--t-lg); font-weight: 700; line-height: 1.3; }
+.lead { font-size: var(--t-lg); line-height: 1.5; color: var(--ink); max-width: 34em; }
+.muted { color: var(--ink-2); }
+.small { font-size: var(--t-sm); }
+.xs { font-size: var(--t-xs); }
+.stack { display: grid; gap: 12px; }
+.stack-s { display: grid; gap: 6px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: grid; gap: 12px; }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 4px 0; }
+
+/* Etapas da abertura */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: passo; }
+.steps li { display: grid; grid-template-columns: 34px 1fr auto; gap: 12px; align-items: start; padding: 14px 0; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps .chip-sw { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: var(--t-xs); font-weight: 700; color: #fff; }
+.steps li:nth-child(1) .chip-sw { background: var(--sw-1); }
+.steps li:nth-child(2) .chip-sw { background: var(--sw-2); }
+.steps li:nth-child(3) .chip-sw { background: var(--sw-3); }
+.steps li:nth-child(4) .chip-sw { background: var(--sw-4); }
+.steps .t { font-weight: 700; }
+.steps .d { color: var(--ink-2); font-size: var(--t-sm); }
+.steps .min { font-size: var(--t-xs); color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; padding-top: 3px; }
+
+.trust { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.trust li { position: relative; padding-left: 22px; font-size: var(--t-sm); }
+.trust li::before { content: ""; position: absolute; left: 2px; top: 0.5em; width: 10px; height: 10px; border-radius: 50%; background: var(--ok); }
+
+/* Botões */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 50px; padding: 0 22px; border-radius: 999px;
+  font: 600 var(--t-md)/1.1 var(--body); text-decoration: none; cursor: pointer;
+  border: 1.5px solid transparent; transition: transform .12s ease, background-color .12s ease;
+}
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-secondary { background: transparent; color: var(--ink); border-color: var(--ink-2); }
+.btn-ghost { background: transparent; color: var(--accent); padding: 0 6px; min-height: 44px; }
+.btn[disabled], .btn[aria-disabled="true"] { opacity: 0.45; cursor: not-allowed; transform: none; }
+.btn-block { width: 100%; }
+.linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); text-decoration: underline; cursor: pointer; min-height: 32px; }
+
+/* Formulário */
+.form { display: grid; gap: 22px; }
+.sec-title { font-family: var(--display); font-weight: 700; font-size: var(--t-lg); padding-top: 8px; border-top: 1px solid var(--line); }
+.sec-title:first-child { border-top: 0; padding-top: 0; }
+.field { display: grid; gap: 8px; border: 0; margin: 0; padding: 0; min-width: 0; }
+.field legend, .field > label.q { font-weight: 600; padding: 0; margin-bottom: 4px; }
+.help { font-size: var(--t-sm); color: var(--ink-2); margin-top: -2px; }
+.opts { display: grid; gap: 8px; }
+.opt {
+  display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; min-height: 50px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--surface); cursor: pointer;
+}
+.opt:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.opt:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+.opt input { accent-color: var(--accent); width: 20px; height: 20px; margin: 2px 0 0; flex: none; }
+.opt span { min-width: 0; }
+input[type="text"], textarea, select {
+  width: 100%; min-height: 50px; padding: 12px 14px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  font: 400 var(--t-md)/1.4 var(--body);
+}
+textarea { min-height: 160px; resize: vertical; }
+input[type="text"]:focus, textarea:focus, select:focus { outline: 3px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.err { color: var(--accent); font-size: var(--t-sm); font-weight: 600; }
+.field[data-invalid="true"] .opts .opt, .field[data-invalid="true"] input[type="text"], .field[data-invalid="true"] select { border-color: var(--accent); }
+
+.note { border-radius: 12px; padding: 14px 16px; font-size: var(--t-sm); display: grid; gap: 6px; background: var(--accent-soft); color: var(--ink); }
+.note-warn { background: var(--warn-soft); }
+.note-warn strong { color: var(--warn); }
+.note-ok { background: var(--ok-soft); }
+.note-ok strong { color: var(--ok); }
+
+details.priv { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 0 16px; }
+details.priv summary { cursor: pointer; font-weight: 600; min-height: 50px; display: flex; align-items: center; }
+details.priv[open] summary { border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+details.priv .stack-s { padding-bottom: 16px; font-size: var(--t-sm); }
+
+/* Minicurso */
+.mods { display: grid; gap: 10px; }
+.mod-card {
+  display: grid; grid-template-columns: 34px 1fr auto; gap: 12px; align-items: center; text-align: left;
+  width: 100%; padding: 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface);
+  color: var(--ink); font: inherit; cursor: pointer;
+}
+.mod-card .n { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: var(--t-sm); border: 1.5px solid var(--line); font-variant-numeric: tabular-nums; }
+.mod-card[data-done="true"] .n { background: var(--ok); border-color: var(--ok); color: var(--surface); }
+.mod-card .t { font-weight: 700; display: block; }
+.mod-card .d { color: var(--ink-2); font-size: var(--t-sm); display: block; }
+.tag { font-size: var(--t-xs); font-weight: 600; padding: 4px 10px; border-radius: 999px; white-space: nowrap; background: var(--paper); color: var(--ink-2); border: 1px solid var(--line); }
+.tag-ok { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
+
+.lesson { display: grid; gap: 16px; }
+.lesson h3 { font-size: var(--t-lg); font-weight: 700; padding-top: 6px; }
+.lesson ul, .lesson ol { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 10px; }
+.lesson ul li { position: relative; padding-left: 22px; }
+.lesson ul li::before { content: ""; position: absolute; left: 3px; top: 0.6em; width: 8px; height: 8px; border-radius: 50%; background: var(--sw-2); }
+.lesson ol { counter-reset: n; }
+.lesson ol li { counter-increment: n; position: relative; padding-left: 40px; min-height: 28px; }
+.lesson ol li::before { content: counter(n); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: var(--t-sm); }
+.lesson .box { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--sw-3); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; }
+.video { display: grid; gap: 8px; }
+.vids { display: grid; gap: 8px; }
+.vids a { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 50px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 600; }
+.vids a span:last-child { color: var(--accent); font-size: var(--t-sm); white-space: nowrap; }
+.yts { display: grid; gap: 14px; }
+.yt { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--surface); }
+.yt-play { display: block; position: relative; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; background: #111; cursor: pointer; }
+.yt-play img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: .82; }
+.yt-ico { position: absolute; inset: 0; margin: auto; width: 68px; height: 46px; border-radius: 12px; background: var(--accent); }
+.yt-ico::after { content: ""; position: absolute; left: 27px; top: 13px; border-left: 18px solid var(--accent-ink); border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+.yt iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+.yt-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; font-weight: 600; }
+.yt-meta a { font-size: var(--t-sm); font-weight: 600; white-space: nowrap; }
+.video video { width: 100%; max-width: 100%; border-radius: 12px; background: #000; }
+
+/* Aula em tela cheia, estilo stories */
+html.story-open, html.story-open body { overflow: hidden; overscroll-behavior: none; }
+.story { position: fixed; inset: 0; z-index: 40; background: #0D090B; color: #FFF; --sw: var(--sw-2); touch-action: pan-y; overscroll-behavior: contain; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.story button, .story a { touch-action: manipulation; }
+.story[data-mod="m1"], .story[data-mod="m5"] { --sw: #D9A38D; }
+.story[data-mod="m2"] { --sw: #DE8395; }
+.story[data-mod="m3"] { --sw: #C9608A; }
+.story[data-mod="m4"] { --sw: #F0697F; }
+.story-frame { position: relative; height: 100%; max-width: 480px; margin: 0 auto; overflow: hidden; background: #171013; --dx: 0px; --dy: 0px; transform: translate3d(var(--dx), var(--dy), 0); transition: transform .22s ease, opacity .22s ease; }
+.story.arrastando .story-frame { transition: none; }
+.story.fechando .story-frame { opacity: .6; }
+@media (min-width: 560px) and (min-height: 620px) {
+  .story-frame { height: min(100% - 32px, 880px); top: 50%; transform: translate3d(var(--dx), calc(-50% + var(--dy)), 0); border-radius: 20px; }
+}
+.story-media { position: absolute; inset: 0 0 auto 0; height: 56%; display: grid; place-items: center; background: color-mix(in srgb, var(--sw) 38%, #171013); }
+.story-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.story-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,9,11,.6) 0%, rgba(13,9,11,0) 24%, rgba(23,16,19,0) 52%, #171013 100%); }
+.story-art { width: 132px; height: 132px; color: #FFF; }
+.story .ic .a, .story .ic .af { stroke: #FFF; } .story .ic .af { fill: #FFF; } .story .ic .tx { fill: #FFF; } .story .ic .on { stroke: #171013; }
+.story-top { position: absolute; top: 0; left: 0; right: 0; z-index: 3; display: grid; gap: 10px; padding: calc(env(safe-area-inset-top, 0px) + 10px) max(12px, env(safe-area-inset-right, 0px)) 0 max(12px, env(safe-area-inset-left, 0px)); }
+.story-bars { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; }
+.story-bars span { height: 3px; border-radius: 3px; background: rgba(255,255,255,.35); overflow: hidden; }
+.story-bars i { display: block; height: 100%; width: 0; background: #FFF; }
+.story-bars span[data-on="done"] i { width: 100%; }
+.story-head { display: flex; align-items: center; gap: 8px; }
+.story-meta { flex: 1; min-width: 0; font-size: var(--t-xs); font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+.story-ic { flex: none; width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(0,0,0,.42); color: #FFF; display: grid; place-items: center; font: 700 .8rem/1 var(--body); cursor: pointer; }
+.story-ic[aria-pressed="true"] { background: #FFF; color: #171013; }
+.story-ic .narr-ico { width: 0; height: 0; border-left: 12px solid currentColor; border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 3px; }
+.story-ic[aria-pressed="true"] .narr-ico { width: 12px; height: 15px; border: 0; border-left: 4px solid currentColor; border-right: 4px solid currentColor; margin: 0; }
+.story-x::before, .story-x::after { content: ""; grid-area: 1 / 1; width: 18px; height: 2.5px; border-radius: 2px; background: currentColor; transform: rotate(45deg); }
+.story-x::after { transform: rotate(-45deg); }
+.story-tap { position: absolute; top: 96px; height: calc(52% - 96px); border: 0; padding: 0; background: transparent; z-index: 2; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.story-tap-prev { left: 0; width: 34%; } .story-tap-next { right: 0; width: 66%; }
+.story-tap:focus { outline: none; }
+.story-credito { position: absolute; right: 12px; top: calc(52% - 18px); z-index: 2; margin: 0; font-size: 11px; color: rgba(255,255,255,.72); text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+.story-body { position: absolute; left: 0; right: 0; top: 48%; bottom: calc(78px + env(safe-area-inset-bottom, 0px)); z-index: 2; overflow-y: auto; display: grid; align-content: start; gap: 12px; padding: 4px max(20px, env(safe-area-inset-right, 0px)) 12px max(20px, env(safe-area-inset-left, 0px)); }
+.story-body .eyebrow { color: #F7B1BE; }
+.story-title { font-family: var(--display); font-weight: 700; font-size: 1.8rem; line-height: 1.1; text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+.story-title:focus { outline: none; }
+.story mark { color: inherit; background: linear-gradient(transparent 55%, color-mix(in srgb, var(--sw) 70%, transparent) 55%); padding: 0 2px; }
+.story-pts { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: var(--t-md); line-height: 1.45; color: #F3EAEE; }
+.story-pts li { position: relative; padding-left: 20px; }
+.story-pts li::before { content: ""; position: absolute; left: 2px; top: .58em; width: 8px; height: 8px; border-radius: 50%; background: var(--sw); }
+.story-pts a { color: #F7B1BE; }
+.story-pts strong { color: #FFF; }
+.story-legenda { margin: 0; padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,.09); font-size: var(--t-sm); line-height: 1.5; color: #EADCE1; }
+.story-nav { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; display: grid; grid-template-columns: 1fr 1.6fr; gap: 10px; padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: linear-gradient(180deg, rgba(23,16,19,0), #171013 34%); }
+.story-btn { background: rgba(255,255,255,.12); color: #FFF; border-color: transparent; }
+.story .btn-primary { background: #F2647B; color: #22070D; }
+.story .btn[disabled] { opacity: .35; }
+.story-aviso { position: absolute; left: 16px; right: 16px; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); z-index: 4; margin: 0; padding: 10px 12px; border-radius: 10px; background: #3A2A0E; color: #F8D99A; font-size: var(--t-sm); }
+.story-in .story-body > * { animation: entra .26s ease both; }
+.story-in[data-dir="prox"] .story-body > * { animation-name: entraProx; }
+.story-in[data-dir="ant"] .story-body > * { animation-name: entraAnt; }
+@keyframes entra { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes entraProx { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes entraAnt { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+.story-pausa { position: absolute; left: 50%; top: 30%; z-index: 5; transform: translate(-50%, -50%); margin: 0; padding: 10px 16px; border-radius: 999px; background: rgba(0,0,0,.6); font-weight: 700; font-size: var(--t-sm); pointer-events: none; display: none; }
+.story.pausado .story-pausa { display: block; }
+.story-dica { position: absolute; left: 16px; right: 16px; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); z-index: 4; margin: 0; padding: 10px 12px; border-radius: 12px; background: rgba(255,255,255,.14); color: #FFF; font-size: var(--t-xs); line-height: 1.45; pointer-events: none; }
+.story-nav .btn { min-height: 52px; }
+@media (prefers-reduced-motion: reduce) {
+  .story-frame { transition: none; }
+  .story-in .story-body > * { animation: none; }
+}
+@media (max-height: 740px) {
+  .story-media { height: 44%; }
+  .story-tap { height: calc(42% - 96px); }
+  .story-credito { top: calc(42% - 18px); }
+  .story-body { top: 39%; gap: 9px; }
+  .story-title { font-size: 1.55rem; }
+  .story-pts { gap: 7px; font-size: var(--t-sm); }
+}
+
+/* Avaliação */
+.qmeta { display: flex; justify-content: space-between; gap: 12px; font-size: var(--t-sm); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.qbar { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.qbar span { display: block; height: 100%; background: var(--sw-3); border-radius: 999px; transition: width .2s ease; }
+.qtext { font-size: var(--t-lg); font-weight: 600; line-height: 1.4; }
+.score { font-family: var(--display); font-weight: 700; font-size: 3.5rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.score small { font-size: var(--t-lg); font-family: var(--body); font-weight: 600; color: var(--ink-2); }
+.by { list-style: none; margin: 0; padding: 0; display: grid; }
+.by li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); font-size: var(--t-sm); }
+.by li:last-child { border-bottom: 1px solid var(--line); }
+.by .v { font-variant-numeric: tabular-nums; font-weight: 700; }
+
+/* Envio */
+.sum { margin: 0; display: grid; gap: 0; }
+.sum div { display: grid; grid-template-columns: minmax(110px, 38%) 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: var(--t-sm); }
+.sum div:last-child { border-bottom: 1px solid var(--line); }
+.sum dt { color: var(--ink-2); }
+.sum dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+pre.msg {
+  margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 340px; overflow: auto;
+  font: 400 var(--t-sm)/1.5 var(--body); background: var(--surface); color: var(--ink);
+  border: 1px dashed var(--ink-2); border-radius: 12px; padding: 14px;
+}
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding-top: 18px; margin-top: 8px; border-top: 1px solid var(--line); font-size: var(--t-xs); color: var(--ink-2); }
+
+@media (min-width: 560px) {
+  .display { font-size: 2.75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+
+<div class="top">
+  <div class="top-in">
+    <div class="brand"><span class="brand-name">Estágio em vendas</span><span class="brand-store" id="topLoja"></span></div>
+    <ol class="swatches" id="swatches" aria-label="Seu progresso">
+      <li data-step="perguntas" data-state="todo"><span class="sw-bar"></span><span class="sw-label">Perguntas<span class="sr-only" data-sr></span></span></li>
+      <li data-step="minicurso" data-state="todo"><span class="sw-bar"></span><span class="sw-label">Minicurso<span class="sr-only" data-sr></span></span></li>
+      <li data-step="avaliacao" data-state="todo"><span class="sw-bar"></span><span class="sw-label">Avaliação<span class="sr-only" data-sr></span></span></li>
+      <li data-step="envio" data-state="todo"><span class="sw-bar"></span><span class="sw-label">Envio<span class="sr-only" data-sr></span></span></li>
+    </ol>
+  </div>
+</div>
+
+<main class="wrap" id="app">
+
+  <!-- Abertura -->
+  <section class="view" id="v-inicio" aria-labelledby="h-inicio">
+    <p class="eyebrow">Acessórios e maquiagem · Salvador</p>
+    <h1 class="display" id="h-inicio" tabindex="-1">Antes da entrevista, você já conhece a loja.</h1>
+    <p class="lead">Você responde algumas perguntas, faz um minicurso de atendimento e uma avaliação rápida. No fim, manda tudo para a loja pelo WhatsApp.</p>
+    <p class="muted small">Leva uns 25 minutos, fora os vídeos. Dá para parar e continuar depois, neste mesmo celular.</p>
+
+    <ol class="steps" aria-label="Como funciona">
+      <li><span class="chip-sw" aria-hidden="true">1</span><span><span class="t">Perguntas</span><br><span class="d">Seus estudos, sua experiência e o seu bairro.</span></span><span class="min">3 min</span></li>
+      <li><span class="chip-sw" aria-hidden="true">2</span><span><span class="t">Minicurso</span><br><span class="d">Cinco aulas narradas, tela por tela, e os vídeos que a loja indica.</span></span><span class="min">15 min</span></li>
+      <li><span class="chip-sw" aria-hidden="true">3</span><span><span class="t">Avaliação</span><br><span class="d">10 perguntas sorteadas. Cada pessoa recebe as suas.</span></span><span class="min">5 min</span></li>
+      <li><span class="chip-sw" aria-hidden="true">4</span><span><span class="t">Envio</span><br><span class="d">Você vê as nossas lojas mais perto de você, escolhe uma e manda tudo pelo WhatsApp.</span></span><span class="min">1 min</span></li>
+    </ol>
+
+    <div class="panel">
+      <p class="h3">Combinados de segurança</p>
+      <ul class="trust">
+        <li>A loja nunca cobra nada de quem se candidata.</li>
+        <li>A entrevista é sempre presencial, na loja.</li>
+        <li>Nesta etapa não pedimos foto, CPF nem documentos.</li>
+      </ul>
+    </div>
+
+    <div class="stack-s" id="inicioLojas"></div>
+
+    <div class="stack" id="inicioAcoes"></div>
+  </section>
+
+  <!-- Perguntas -->
+  <section class="view" id="v-perguntas" aria-labelledby="h-perguntas" hidden>
+    <p class="eyebrow">Etapa 1 de 4</p>
+    <h2 class="h2" id="h-perguntas" tabindex="-1">Perguntas rápidas</h2>
+    <p class="muted">São só as informações que a loja precisa para te chamar. Nada de currículo.</p>
+    <div id="formErros" class="note note-warn" role="alert" hidden></div>
+    <form class="form" id="form" novalidate>
+      <div id="formCampos" class="form"></div>
+
+      <div class="form">
+        <h3 class="sec-title">Seus dados</h3>
+        <details class="priv" id="privacidade">
+          <summary>Aviso de privacidade</summary>
+          <div class="stack-s">
+            <p><strong>Quem cuida dos seus dados:</strong> <span id="privEmpresa">a empresa responsável pela loja que você escolher no fim</span>.</p>
+            <p><strong>O que pedimos:</strong> nome, bairro, faixa de idade, dados de estudo, experiência, afinidade com acessórios e maquiagem, e o resultado do minicurso e da avaliação.</p>
+            <p><strong>Sua localização:</strong> no fim, se você deixar, o celular usa a sua localização só para calcular a distância até as lojas. Ela não é enviada para a loja nem fica guardada. Vai na mensagem só a loja que você escolher e a distância aproximada até ela.</p>
+            <p><strong>Para quê:</strong> avaliar sua candidatura ao estágio e falar com você sobre ela.</p>
+            <p><strong>Onde ficam:</strong> esta página não envia suas respostas para nenhum servidor. Elas ficam guardadas só neste celular até você mandar a mensagem pelo WhatsApp para a loja. Depois, ficam na conversa com a loja.</p>
+            <p><strong>Por quanto tempo:</strong> se você não for chamada(o), a loja apaga suas respostas em até <span id="privRetencao">6 meses</span>, a menos que você aceite ser chamada(o) para outras vagas.</p>
+            <p><strong>Seus direitos:</strong> pedir cópia, correção ou exclusão dos seus dados quando quiser, pelo WhatsApp da loja.</p>
+            <p><strong>Decisão:</strong> ninguém é eliminado pela nota da avaliação. Quem decide é uma pessoa da equipe.</p>
+            <p><strong>Fotos:</strong> as fotos das aulas vêm do Pexels, um banco de imagens gratuito, e são carregadas de lá.</p>
+            <p id="privYoutube" hidden><strong>Vídeos:</strong> os vídeos indicados são do YouTube. Quando você toca um deles, o YouTube recebe esse acesso.</p>
+          </div>
+        </details>
+        <div class="field" id="f-privacidadeOk">
+          <div class="opts">
+            <label class="opt"><input type="checkbox" id="privacidadeOk" name="privacidadeOk"><span>Li o aviso de privacidade e concordo em enviar meus dados para a loja que eu escolher no fim.</span></label>
+          </div>
+          <p class="err" id="e-privacidadeOk" hidden></p>
+        </div>
+        <div class="field">
+          <div class="opts">
+            <label class="opt"><input type="checkbox" id="outrasVagas" name="outrasVagas"><span>Pode me chamar para outras vagas de estágio das lojas participantes. <span class="muted">(opcional)</span></span></label>
+            <label class="opt"><input type="checkbox" id="parceiros" name="parceiros"><span>Pode me avisar de vagas em outros comércios do bairro. Meus dados só são passados se eu topar a vaga. <span class="muted">(opcional)</span></span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack">
+        <button type="submit" class="btn btn-primary btn-block" id="btnSalvarPerguntas">Salvar e ir para o minicurso</button>
+        <button type="button" class="btn btn-ghost" data-go="inicio">Voltar ao início</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Minicurso: lista de módulos -->
+  <section class="view" id="v-minicurso" aria-labelledby="h-minicurso" hidden>
+    <p class="eyebrow">Etapa 2 de 4</p>
+    <h2 class="h2" id="h-minicurso" tabindex="-1">Minicurso</h2>
+    <p class="muted">Cinco aulas curtas, com narração, na ordem que você quiser. Se puder, use fone de ouvido. A avaliação libera quando você terminar as cinco. Os vídeos são para assistir antes da conversa na loja.</p>
+    <div class="mods" id="modsLista"></div>
+    <div class="stack">
+      <button type="button" class="btn btn-primary btn-block" id="btnIrAvaliacao">Ir para a avaliação</button>
+      <p class="muted small" id="minicursoFalta"></p>
+      <button type="button" class="btn btn-ghost" data-go="perguntas">Rever minhas respostas</button>
+    </div>
+  </section>
+
+  <!-- Minicurso: um módulo -->
+  <section class="view" id="v-modulo" aria-labelledby="h-modulo" hidden>
+    <div><button type="button" class="linkish" data-go="minicurso">Voltar aos módulos</button></div>
+    <p class="eyebrow" id="moduloMetaPagina"></p>
+    <h2 class="h2" id="h-modulo" tabindex="-1"></h2>
+    <div class="video" id="moduloVideo" hidden></div>
+    <div class="lesson" id="moduloConteudo"></div>
+    <button type="button" class="btn btn-primary btn-block" id="btnConcluirModulo">Concluí este módulo</button>
+  </section>
+
+  <!-- Avaliação -->
+  <section class="view" id="v-avaliacao" aria-labelledby="h-avaliacao" hidden>
+    <p class="eyebrow">Etapa 3 de 4</p>
+    <h2 class="h2" id="h-avaliacao" tabindex="-1">Avaliação rápida</h2>
+    <div id="avaliacaoIntro" class="stack">
+      <p>São <strong id="avTotal">10</strong> perguntas sorteadas, quase todas com situações reais de loja: atender, vender, lidar com clientes, os vídeos indicados e a rotina no estágio. Cada tentativa traz perguntas novas, então não adianta decorar as respostas de outra pessoa.</p>
+      <ul class="trust">
+        <li>Não tem tempo limite.</li>
+        <li>Você tem até <span id="avMax">3</span> tentativas, e a loja vê todas.</li>
+        <li>A nota ajuda a loja a te conhecer. Quem decide é uma pessoa da equipe.</li>
+      </ul>
+      <p class="muted small" id="avTentativas"></p>
+      <button type="button" class="btn btn-primary btn-block" id="btnComecarAvaliacao">Começar a avaliação</button>
+      <button type="button" class="btn btn-secondary btn-block" id="btnAvEnvio" data-go="envio" hidden>Seguir para o envio</button>
+      <button type="button" class="btn btn-ghost" data-go="minicurso">Rever o minicurso</button>
+    </div>
+    <form id="avaliacaoQuestao" class="stack" hidden novalidate>
+      <div class="qmeta"><span id="qContador"></span><span id="qTema"></span></div>
+      <div class="qbar" aria-hidden="true"><span id="qBarra" style="width:0%"></span></div>
+      <fieldset class="field">
+        <legend class="qtext" id="qTexto"></legend>
+        <div class="opts" id="qOpcoes"></div>
+      </fieldset>
+      <button type="submit" class="btn btn-primary btn-block" id="btnResponder" disabled>Responder</button>
+    </form>
+  </section>
+
+  <!-- Resultado -->
+  <section class="view" id="v-resultado" aria-labelledby="h-resultado" hidden>
+    <p class="eyebrow" id="resTentativa"></p>
+    <h2 class="h2" id="h-resultado" tabindex="-1">Seu resultado</h2>
+    <p class="score" id="resNota"></p>
+    <div class="note" id="resMensagem"></div>
+    <ul class="by" id="resPorModulo"></ul>
+    <div class="stack" id="resAcoes"></div>
+  </section>
+
+  <!-- Envio -->
+  <section class="view" id="v-envio" aria-labelledby="h-envio" hidden>
+    <p class="eyebrow">Etapa 4 de 4</p>
+    <h2 class="h2" id="h-envio" tabindex="-1">Escolha a loja e envie</h2>
+    <div class="panel stack-s" id="lojaBox">
+      <p class="h3">Lojas perto de você</p>
+      <p class="small muted" id="lojaGeoTexto">Toque no botão para ver as nossas lojas da mais perto para a mais longe. Sua localização só é usada aqui no celular para calcular a distância.</p>
+      <button type="button" class="btn btn-primary btn-block" id="btnPerto">Ver as lojas mais perto de mim</button>
+      <p class="small" id="lojaGeoStatus" role="status"></p>
+      <fieldset class="field" id="f-lojaEscolha">
+        <legend id="lojaLegenda">Para qual loja você quer mandar?</legend>
+        <div class="opts" id="lojaOpcoes"></div>
+        <p class="err" id="e-lojaEscolha" hidden></p>
+      </fieldset>
+    </div>
+    <dl class="sum" id="envioResumo"></dl>
+    <div><button type="button" class="linkish" data-go="perguntas">Corrigir alguma resposta</button></div>
+    <div class="stack-s">
+      <p class="small muted">Esta é a mensagem que vai para a loja:</p>
+      <pre class="msg" id="envioMensagem"></pre>
+    </div>
+    <div class="stack" id="envioAcoes">
+      <a class="btn btn-primary btn-block" id="btnWhatsApp" href="#" target="_blank" rel="noopener">Abrir o WhatsApp com a mensagem</a>
+      <button type="button" class="btn btn-secondary btn-block" id="btnCopiar">Copiar mensagem</button>
+      <p class="small muted" id="envioAjuda"></p>
+      <p class="small" id="envioCopiado" role="status"></p>
+    </div>
+    <div class="note note-ok" id="envioDepois" hidden>
+      <p><strong>Depois de enviar</strong></p>
+      <p id="envioDepoisTexto"></p>
+    </div>
+    <div class="panel">
+      <p class="small">Terminou? Se este celular não é só seu, apague suas respostas daqui. A mensagem enviada continua com a loja.</p>
+      <button type="button" class="btn btn-secondary" id="btnApagar">Apagar minhas respostas deste celular</button>
+    </div>
+  </section>
+
+  <!-- Equipe da loja -->
+  <section class="view" id="v-equipe" aria-labelledby="h-equipe" hidden>
+    <p class="eyebrow">Para a equipe da loja</p>
+    <h2 class="h2" id="h-equipe" tabindex="-1">Conferir uma candidatura</h2>
+    <p class="muted">Cole a mensagem que chegou no WhatsApp. O código no fim mostra se nome, loja, nota ou data foram alterados depois de gerados.</p>
+    <label class="q" for="conferirTexto"><span class="sr-only">Mensagem recebida</span></label>
+    <textarea id="conferirTexto" placeholder="Cole aqui a mensagem inteira"></textarea>
+    <button type="button" class="btn btn-primary btn-block" id="btnConferir">Conferir</button>
+    <div id="conferirResultado" role="status"></div>
+
+    <div class="panel">
+      <p class="h3">Links de cada loja</p>
+      <p class="small muted">Use o link desta página com o final abaixo, no QR code do cartaz. A loja do link já vem marcada no fim, mas a candidata pode escolher outra mais perto.</p>
+      <ul class="by" id="equipeLinks"></ul>
+    </div>
+
+    <div class="panel">
+      <p class="h3">Combinados do piloto</p>
+      <ul class="trust">
+        <li id="equipePrazo">Responder toda candidatura no prazo, mesmo quando a resposta for não.</li>
+        <li>A nota informa, não elimina. A decisão é de uma pessoa da equipe.</li>
+        <li>Chamar para conversa presencial na loja. Documentos, só depois de chamar a pessoa, para fazer o termo de estágio. Nunca pedir dinheiro.</li>
+        <li>Ninguém atende cliente nem trabalha na loja antes do termo de estágio assinado.</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <p class="h3">O que ainda falta configurar</p>
+      <ul class="trust" id="equipePendencias"></ul>
+    </div>
+
+    <button type="button" class="btn btn-ghost" id="btnSairEquipe">Voltar ao início</button>
+  </section>
+
+  <div class="story" id="story" role="dialog" aria-modal="true" aria-labelledby="slideTitulo" hidden>
+    <div class="story-frame" id="storyFrame">
+      <div class="story-media" aria-hidden="true">
+        <svg class="ic story-art" id="storyArt" viewBox="0 0 120 120"></svg>
+        <img id="storyImg" alt="" decoding="async" hidden>
+      </div>
+      <div class="story-top">
+        <div class="story-bars" id="aulaBar" aria-hidden="true"></div>
+        <div class="story-head">
+          <p class="story-meta" id="moduloMeta"></p>
+          <button type="button" class="story-ic" id="btnNarr" aria-pressed="false" aria-label="Ouvir a aula" title="Ouvir a aula"><span class="narr-ico" aria-hidden="true"></span></button>
+          <button type="button" class="story-ic story-cc" id="btnLegenda" aria-pressed="false" aria-label="Mostrar a legenda" title="Legenda">CC</button>
+          <button type="button" class="story-ic story-x" id="btnStoryFechar" aria-label="Fechar a aula" title="Fechar"></button>
+        </div>
+      </div>
+      <button type="button" class="story-tap story-tap-prev" id="tapAnt" tabindex="-1" aria-hidden="true"></button>
+      <button type="button" class="story-tap story-tap-next" id="tapProx" tabindex="-1" aria-hidden="true"></button>
+      <p class="story-credito" id="storyCredito" hidden>Foto: Pexels</p>
+      <div class="story-body" id="slide"></div>
+      <p class="story-pausa" aria-hidden="true">Pausado</p>
+      <p class="story-dica" id="storyDica" hidden>Toque do lado direito para avançar e do esquerdo para voltar. Também dá para arrastar para os lados. Para fechar, arraste para baixo. Segure o dedo na tela para pausar.</p>
+      <p class="story-aviso" id="narrAviso" role="status" hidden>Não consegui tocar a narração agora. Você pode seguir lendo as telas.</p>
+      <div class="story-nav">
+        <button type="button" class="btn story-btn" id="btnSlideAnt">‹ Voltar</button>
+        <button type="button" class="btn btn-primary" id="btnSlideProx">Próximo ›</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span id="footVersao"></span>
+    <button type="button" class="linkish xs" id="btnEquipe">Para a equipe da loja</button>
+  </footer>
+</main>
+
+<style>
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+
+<script>
+(() => {
+  'use strict';
+  document.documentElement.lang = 'pt-BR';
+
+  /* ---------- Configuração do piloto ---------- */
+  const CONFIG = {
+    versao: '0.6 (piloto)',
+    prazoResposta: 'em até 3 dias úteis',
+    retencao: '6 meses',
+    // Quantas perguntas a avaliação sorteia de cada tema (m2..m5 = módulos; v = vídeos da loja).
+    composicao: { m2: 3, m3: 2, m4: 1, m5: 1, v: 3 },
+    notaMinima: 7,
+    maxTentativas: 3,
+    lojas: [
+      // lat/lng: posição da loja no mapa (graus decimais). Sem elas, a loja aparece na lista, mas sem distância.
+      { slug: 'boca-do-rio', marca: 'Via Bijux', bairro: 'Boca do Rio', endereco: 'Rua Hélio Machado', empresa: 'NID Bijuterias Ltda', whatsapp: '', lat: null, lng: null },
+      { slug: 'cajazeiras-via-bijux', marca: 'Via Bijux', bairro: 'Cajazeiras', endereco: '', empresa: '', whatsapp: '', lat: null, lng: null },
+      { slug: 'cajazeiras-ser-linnda', marca: 'Ser + Linnda', bairro: 'Cajazeiras', endereco: '', empresa: '', whatsapp: '', lat: null, lng: null }
+    ],
+    // Vídeo de cada módulo: link externo (abre fora da página) ou arquivo publicado junto com a página (toca aqui).
+    videos: { m1: '', m2: '', m3: '', m4: '', m5: '' },
+    // Vídeos que a loja manda para as candidatas, na ordem em que são enviados. Com "titulo", o nome aparece no lugar de "Vídeo 1".
+    videosLoja: [
+      // O vídeo k6LnoWgAm6I saiu da lista: está privado no YouTube e não abre para ninguém.
+      { id: '4yPrcJWrBGk', titulo: 'Você se prepara para o dia?', canal: 'Falando de Loja' },
+      { id: 'dEEgF0Jg5BM', titulo: 'Qual a melhor forma de abordagem?', canal: 'Falando de Loja' },
+      { id: 'AZWNP0R5ejM', titulo: 'Técnica infalível para encantar o cliente', canal: 'Falando de Loja' },
+      { id: 'nZf_px_eIm0', titulo: 'Como encantar o cliente?', canal: 'Falando de Loja' },
+      { id: 'iP6_YFE78ZA', titulo: 'Como lidar com clientes difíceis', canal: 'Falando de Loja' },
+      { id: 'srtwwYwSogY', titulo: 'Seja proativo', canal: 'Seja Uma Pessoa Melhor' },
+      { id: 'Ktj4m1xO7wI', titulo: 'Um ótimo e um péssimo atendimento ao mesmo tempo', canal: 'Falando de Loja' },
+      { id: 'q-bnJ164fCY', titulo: 'Como contornar as objeções dos clientes', canal: 'Falando de Loja' },
+      { id: 'gX3V7W3UWF0', titulo: 'O vendedor tímido', canal: 'Falando de Loja' }
+    ],
+    guiaRoupa: 'https://gabrielaganem.com/2017/10/roupa-trabalho-dresscode-profissional/',
+    // true no site próprio: os vídeos do YouTube tocam dentro da página. No Claude fica false, porque lá vídeo de outro site não abre.
+    embedVideos: true
+  };
+
+  /* ---------- Minicurso ---------- */
+  const MODULOS = [
+    {
+      id: 'm1', titulo: 'O estágio por dentro', minutos: 3,
+      resumo: 'A rotina na loja, o que a loja espera e como se proteger de golpes.',
+      html: ''
+    },
+    {
+      id: 'm2', titulo: 'Atendimento que vende', minutos: 3,
+      resumo: 'Os cinco passos de um bom atendimento, do "boa tarde" ao "volte sempre".',
+      html: ''
+    },
+    {
+      id: 'm3', titulo: 'Lidando com o público', minutos: 3,
+      resumo: 'Loja cheia, cliente irritada, trocas, testers e respeito com todo mundo.',
+      html: ''
+    },
+    {
+      id: 'm4', titulo: 'Conhecendo os produtos', minutos: 3,
+      resumo: 'Bijuteria, semijoia, cuidados com as peças e o básico de maquiagem.',
+      html: ''
+    },
+    {
+      id: 'm5', titulo: 'Antes do primeiro dia', minutos: 3,
+      resumo: 'Como chegar preparada(o) e quais documentos separar.',
+      html: ''
+    },
+    {
+      id: 'v', extra: true, titulo: 'Vídeos indicados pela loja', minutos: 0,
+      resumo: 'Os vídeos que a loja manda para quem vai começar.',
+      html: ''
+    }
+  ];
+  const CORE = MODULOS.filter(m => !m.extra);
+  /*AULAS:BEGIN*/
+  const AULAS = {"m1": [{"art": "store", "k": "Módulo 1", "t": "O estágio <mark>por dentro</mark>", "p": ["O que você vai fazer no dia a dia.", "Como se proteger de golpes.", "O que a loja espera de você."], "n": "Olá! Que bom ter você aqui no minicurso das nossas lojas. Neste primeiro módulo, você vai conhecer o estágio por dentro: o que você vai fazer no dia a dia, como se proteger de golpes, e o que a loja espera de você.", "img": 6545444}, {"art": "display", "k": "A rotina", "t": "Seu dia a dia <mark>na loja</mark>", "p": ["<strong>Atender clientes</strong>, do \"boa tarde\" até o pagamento.", "<strong>Organizar e repor</strong> os expositores.", "Deixar a loja bonita e limpa.", "Aprender sobre acessórios, cuidados com as peças e maquiagem."], "n": "No dia a dia, você vai atender clientes, do boa tarde até o pagamento. Também vai organizar e repor os expositores, ajudar a deixar a loja bonita e limpa, e aprender sobre os produtos: acessórios, cuidados com as peças e maquiagem.", "img": 7679654}, {"art": "calendar", "k": "A rotina", "t": "Em pé e <mark>em movimento</mark>", "p": ["Você passa boa parte do tempo em pé, circulando pela loja.", "O movimento é maior nos <strong>fins de semana</strong>.", "Datas fortes: <strong>Dia das Mães, Dia dos Namorados e Natal</strong>."], "n": "Você passa boa parte do tempo em pé, circulando pela loja. O movimento é maior nos fins de semana e nas datas fortes do comércio, como o Dia das Mães, o Dia dos Namorados e o Natal.", "img": 29872681}, {"art": "shield", "k": "Segurança", "t": "A loja <mark>nunca cobra nada</mark>", "p": ["A entrevista é sempre <strong>presencial</strong>, na loja.", "Ninguém da loja pede senha, código ou Pix. <strong>Se pedirem, é golpe.</strong>", "Documentos, só depois de te chamar, para fazer o termo."], "n": "Atenção à segurança. A loja nunca cobra nada de quem se candidata, e a entrevista é sempre presencial, na loja. Ninguém da loja pede senha, código ou pix. Se pedirem, é um golpe. Documentos, a loja só pede depois de chamar você, para fazer o termo de estágio.", "img": 6029103}, {"art": "star", "k": "O que a loja espera", "t": "O que a loja <mark>espera de você</mark>", "p": ["<strong>Vontade de aprender</strong>, inclusive com os erros.", "<strong>Iniciativa</strong>: não esperar que tudo seja dito.", "<strong>Boa comunicação</strong> com clientes e equipe.", "Jogo de cintura para tarefas novas e mudanças."], "n": "O que a loja espera de você? Vontade de aprender, inclusive com os erros. Iniciativa, sem esperar que tudo seja dito. Boa comunicação com os clientes e com a equipe. E jogo de cintura para lidar com tarefas novas e com mudanças.", "img": 5710155}, {"art": "sprout", "k": "O que a loja espera", "t": "Ninguém espera uma <mark>profissional pronta</mark>", "p": ["Estágio é um período de <strong>formação</strong>.", "Leve a sério: as 5 horas passam voando, então o foco fica no atendimento.", "Quem se dedica e tem o perfil pode ser <strong>aproveitada(o) na equipe</strong> quando surge uma oportunidade."], "n": "Ninguém espera uma profissional pronta. O estágio é um período de formação. Mas leve a sério: as cinco horas passam voando, então o foco fica no atendimento. Quem se dedica e tem o perfil pode ficar na equipe quando surge uma oportunidade.", "img": 4144923}, {"art": "check", "k": "Resumo", "t": "Para <mark>guardar</mark>", "p": ["Atender, organizar e aprender sobre os produtos.", "Mais movimento nos fins de semana e datas fortes.", "A loja nunca cobra nada.", "Vontade de aprender, iniciativa e boa comunicação."], "n": "Para guardar: no dia a dia, você atende, organiza e aprende sobre os produtos. O movimento é maior nos fins de semana e nas datas fortes. A loja nunca cobra nada. E o que mais conta é vontade de aprender, iniciativa e boa comunicação.", "img": 20858959}], "m2": [{"art": "bag", "k": "Módulo 2", "t": "Atendimento <mark>que vende</mark>", "p": ["Vender bem é <strong>ajudar a pessoa</strong> a encontrar o que combina com ela.", "O foco é encantar a cliente: conversar e ajudar.", "Os elogios vêm depois.", "São <strong>cinco passos</strong>."], "n": "Módulo dois: atendimento que vende. Vender bem é ajudar a pessoa a encontrar o que combina com ela. O foco é encantar a cliente: conversar e ajudar. Os elogios vêm depois. São cinco passos.", "img": 12935094}, {"art": "ola", "k": "Passo 1", "t": "<mark>Receba bem</mark>", "p": ["Cumprimente <strong>logo que a pessoa entrar</strong>, com sorriso e olho no olho.", "Um <strong>\"bom dia\" animado</strong> seguido de <strong>\"seja bem-vinda\"</strong> quebra o gelo.", "Apresente-se e mostre que está ali para ajudar, sem pressionar."], "n": "Passo um: receba bem. Cumprimente logo que a pessoa entrar, com um sorriso, olhando nos olhos. Um bom dia animado, seguido de um seja bem-vinda, costuma quebrar o gelo. Diga o seu nome e mostre que está ali para ajudar, sem pressionar.", "img": 6127378}, {"art": "eye", "k": "Passo 1", "t": "\"Só estou <mark>olhando</mark>\"", "p": ["Responda: <strong>\"Fique à vontade, estou aqui se precisar.\"</strong>", "Continue por perto, caso ela precise."], "n": "E se a cliente disser: só estou olhando? Responda: fique à vontade, estou aqui se precisar. E continue por perto.", "img": 6593778}, {"art": "pergunta", "k": "Passo 2", "t": "<mark>Pergunte</mark> e escute", "p": ["\"É para você ou para presente?\"", "\"Para qual ocasião?\"", "\"Que estilo você mais usa?\"", "<strong>Escute mais do que fala.</strong>"], "n": "Passo dois: pergunte e escute. Perguntas abertas abrem a conversa. É para você ou para presente? Para qual ocasião? Que estilo você mais usa? E lembre: escute mais do que fala.", "img": 8387132}, {"art": "trio", "k": "Passo 3", "t": "Mostre <mark>duas ou três</mark> opções", "p": ["Escolha peças que combinem com o que você ouviu.", "Opção demais confunde."], "n": "Passo três: mostre poucas opções. Duas ou três peças que combinem com o que você ouviu. Opções demais confundem.", "img": 7679657}, {"art": "necklace", "k": "Passo 4", "t": "<mark>Complete</mark> o visual", "p": ["Sugira uma peça que combine: o colar para o brinco, o lápis para o batom.", "<strong>Uma sugestão</strong>, sem insistir."], "n": "Passo quatro: complete o visual. Sugira uma peça que combine, como o colar para o brinco, ou o lápis para o batom. Uma sugestão só, sem insistir.", "img": 9649265}, {"art": "bag", "k": "Passo 5", "t": "<mark>Feche</mark> e cuide", "p": ["Confirme a escolha.", "Explique os <strong>cuidados com a peça</strong>.", "Convide a cliente a voltar."], "n": "Passo cinco: feche e cuide. Confirme a escolha, explique os cuidados com a peça, e convide a cliente a voltar.", "img": 7679860}, {"art": "tag", "k": "Preço", "t": "Quando a cliente <mark>acha caro</mark>", "p": ["Explique o acabamento, a durabilidade e os cuidados.", "Se ela quiser, mostre uma <strong>opção mais em conta</strong>.", "Desconto, <strong>só com a responsável</strong> pela loja."], "n": "E quando a cliente acha caro? Explique o acabamento, a durabilidade e os cuidados. Se ela quiser, mostre uma opção mais em conta. Desconto, só com a responsável pela loja.", "img": 11702921}, {"art": "check", "k": "Resumo", "t": "Os <mark>cinco passos</mark>", "p": ["Receba bem.", "Pergunte e escute.", "Mostre poucas opções.", "Complete o visual.", "Feche e cuide."], "n": "Vamos relembrar os cinco passos. Receba bem. Pergunte e escute. Mostre poucas opções. Complete o visual. E, por fim, feche a venda e cuide da cliente.", "img": 36730427}], "m3": [{"art": "heart", "k": "Módulo 3", "t": "Lidando com <mark>o público</mark>", "p": ["Loja cheia, cliente irritada, trocas e testers.", "Em todas as situações, <strong>cada atendimento conta</strong>."], "n": "Módulo três: lidando com o público. Vamos falar de loja cheia, de cliente irritada, de trocas e dos produtos de teste. Em todas essas situações, cada atendimento conta.", "img": 3865903}, {"art": "pessoas", "k": "Respeito", "t": "<mark>Respeito igual</mark> para todo mundo", "p": ["A mesma atenção para qualquer estilo, idade ou jeito de vestir.", "Comprando ou não."], "n": "Respeito igual para todo mundo. A mesma atenção para qualquer estilo, idade ou jeito de vestir, comprando ou não.", "img": 1644888}, {"art": "pessoas", "k": "Loja cheia", "t": "\"<mark>Já te atendo!</mark>\"", "p": ["Faça contato com quem está esperando.", "Não deixe ninguém sem resposta.", "Sem largar a cliente que você está atendendo."], "n": "Loja cheia? Faça contato com quem está esperando e diga: já te atendo! Não deixe ninguém sem resposta, mas sem largar a cliente que você está atendendo.", "img": 14666064}, {"art": "calma", "k": "Cliente irritada", "t": "<mark>Ouça</mark> sem interromper", "p": ["Mostre que entendeu: <strong>\"Entendo, isso é chato mesmo.\"</strong>", "Não leve para o lado pessoal.", "Resolva o que estiver ao seu alcance."], "n": "Cliente irritada? Ouça sem interromper e mostre que entendeu. Por exemplo: entendo, isso é chato mesmo. Não leve para o lado pessoal, e resolva o que estiver ao seu alcance.", "img": 7772172}, {"art": "dupla", "k": "Troca, devolução ou desconto", "t": "Passou do seu alcance? <mark>Chame a responsável</mark>", "p": ["Acompanhe até resolver.", "Trocas seguem a <strong>política da loja</strong>."], "n": "Se o pedido passar do seu alcance, como uma troca, uma devolução ou um desconto, chame a responsável pela loja e acompanhe até resolver. As trocas seguem a política da loja.", "img": 8396320}, {"art": "pergunta", "k": "Dúvida", "t": "Não sabe? <mark>Nunca invente</mark>", "p": ["Diga que vai <strong>confirmar com a equipe</strong>."], "n": "Não sabe a resposta? Diga que vai confirmar com a equipe. Nunca invente.", "img": 7709145}, {"art": "swab", "k": "Higiene", "t": "Tester com <mark>aplicador descartável</mark>", "p": ["Mãos limpas.", "<strong>Nunca</strong> passe o produto direto na pele da cliente."], "n": "Higiene com os produtos de teste: use aplicador descartável, esteja com as mãos limpas, e nunca passe o produto direto na pele da cliente.", "img": 7290611}, {"art": "phoneoff", "k": "Atenção", "t": "A atenção é <mark>da cliente</mark>", "p": ["Durante o atendimento, o celular fica para depois."], "n": "A atenção é da cliente. Durante o atendimento, o celular fica para depois.", "img": 6370366}, {"art": "bag", "k": "Cliente que volta", "t": "Quem é bem atendida <mark>volta</mark>", "p": ["Mesmo quando não compra naquele dia.", "Cada atendimento conta."], "n": "Quem é bem atendida volta, mesmo quando não compra naquele dia. Cada atendimento conta.", "img": 4173110}, {"art": "check", "k": "Resumo", "t": "Para <mark>guardar</mark>", "p": ["Respeito igual para todo mundo.", "Ouvir primeiro, resolver depois.", "Na dúvida, chamar a responsável.", "Higiene com testers, sempre."], "n": "Para guardar: respeito igual para todo mundo. Ouvir primeiro e resolver depois. Na dúvida, chamar a responsável. E higiene com os produtos de teste, sempre.", "img": 5710142}], "m4": [{"art": "necklace", "k": "Módulo 4", "t": "Conhecendo <mark>os produtos</mark>", "p": ["Acessórios: bijuteria, semijoia e cuidados.", "Maquiagem: subtom, teste da base e validade."], "n": "Módulo quatro: conhecendo os produtos. Primeiro os acessórios: bijuteria, semijoia e cuidados com as peças. Depois a maquiagem: subtom, teste da base e validade.", "img": 12640687}, {"art": "rings", "k": "Acessórios", "t": "Bijuteria ou <mark>semijoia</mark>?", "p": ["A <strong>semijoia</strong> tem um banho mais grosso de metal nobre, como ouro, prata ou ródio, e <strong>dura mais</strong>.", "A <strong>bijuteria</strong> tem acabamento mais simples e preço menor."], "n": "Qual é a diferença entre bijuteria e semijoia? A semijoia tem um banho mais grosso de metal nobre, como ouro, prata ou ródio, e por isso dura mais. A bijuteria tem acabamento mais simples e preço menor.", "img": 1616096}, {"art": "dropoff", "k": "Acessórios", "t": "Longe de <mark>água, perfume e cremes</mark>", "p": ["Nada de banho, piscina ou mar com a peça.", "Guardar <strong>seca e separada</strong>.", "Limpar com flanela macia."], "n": "Para a peça durar, oriente a cliente a evitar água, perfume e cremes. Nada de banho, piscina ou mar com a peça. O ideal é guardar seca e separada, e limpar com uma flanela macia.", "img": 5469689}, {"art": "earcheck", "k": "Acessórios", "t": "Pele sensível? <mark>Sem níquel</mark>", "p": ["Indique peças <strong>antialérgicas</strong>."], "n": "Para quem tem pele sensível, indique peças antialérgicas, sem níquel.", "img": 10665376}, {"art": "swatches", "k": "Maquiagem", "t": "<mark>Subtom</mark>: o fundo de cor da pele", "p": ["<strong>Frio</strong>: puxa para o rosado.", "<strong>Quente</strong>: puxa para o dourado.", "<strong>Neutro</strong>: fica entre os dois.", "Ajuda a escolher a base."], "n": "Na maquiagem, o subtom é o fundo de cor da pele. Ele pode ser frio, quando puxa para o rosado. Quente, quando puxa para o dourado. Ou neutro, quando fica entre os dois. Saber o subtom ajuda a escolher a base.", "img": 7290711}, {"art": "sun", "k": "Maquiagem", "t": "Teste a base no <mark>maxilar ou pescoço</mark>", "p": ["Sempre sob <strong>boa luz</strong>."], "n": "O teste da cor da base é feito na linha do maxilar ou no pescoço, sempre com boa luz.", "img": 12585853}, {"art": "jar", "k": "Maquiagem", "t": "<mark>12M</mark> = 12 meses depois de aberto", "p": ["Confira a data de validade e o símbolo do pote aberto.", "Venda só produto <strong>lacrado e em bom estado</strong>."], "n": "Confira sempre a validade. Na embalagem, o símbolo do potinho aberto com o número doze e a letra eme quer dizer: usar em até doze meses depois de aberto. E venda só produto lacrado e em bom estado.", "img": 6690241}, {"art": "pack", "k": "Maquiagem", "t": "Fale só o que o produto <mark>promete</mark>", "p": ["Se a embalagem não diz \"à prova d'água\", não diga que é."], "n": "Fale só o que o produto promete. Se a embalagem não diz que é à prova d'água, não diga que é.", "img": 9777328}, {"art": "check", "k": "Resumo", "t": "Para <mark>guardar</mark>", "p": ["Semijoia tem banho mais grosso e dura mais.", "Peça longe de água, perfume e cremes.", "Base se testa no maxilar, com boa luz.", "Validade e lacre conferidos antes de vender."], "n": "Para guardar: a semijoia tem banho mais grosso e dura mais. As peças ficam longe de água, perfume e cremes. A base se testa no maxilar, com boa luz. E validade e lacre são conferidos antes de vender.", "img": 4889714}], "m5": [{"art": "calendar", "k": "Módulo 5", "t": "Antes do <mark>primeiro dia</mark>", "p": ["As orientações que a loja passa para quem vai começar.", "Como chegar bem e quais documentos separar."], "n": "Módulo cinco: antes do primeiro dia. São as orientações que a loja passa para quem vai começar: como chegar bem, e quais documentos separar.", "img": 1458336}, {"art": "clock", "k": "Para chegar bem", "t": "Chegue <mark>5 minutos antes</mark>", "p": ["Dá tempo de lavar as mãos e beber uma água.", "Você entra na loja ligada(o)."], "n": "Crie o hábito de chegar cinco minutos antes. Assim dá tempo de lavar as mãos, beber uma água, e entrar na loja com energia.", "img": 6616845}, {"art": "lunch", "k": "Para chegar bem", "t": "<mark>Garrafinha</mark> e <mark>lanche de casa</mark>", "p": ["Alimente-se bem antes de sair: ajuda a manter a animação nas 5 horas.", "A loja tem filtro com água natural e gelada.", "Evite comida de rua."], "n": "Alimente-se bem antes de sair de casa. Isso ajuda a manter a animação durante as cinco horas. Leve a sua garrafinha: a loja tem filtro com água natural e gelada. E leve um lanche de casa, evitando comida de rua.", "img": 5852274}, {"art": "lipstick", "k": "Para chegar bem", "t": "Roupa e <mark>apresentação</mark>", "p": ["Veja o <a href=\"https://gabrielaganem.com/2017/10/roupa-trabalho-dresscode-profissional/\" target=\"_blank\" rel=\"noopener\">guia de roupa para o trabalho</a> que a loja indica. Ele abre fora desta página.", "Se você usa maquiagem, leve seu <strong>gloss ou batom</strong> para retocar.", "Os clientes reparam em quem atende."], "n": "Sobre roupa e apresentação: veja o guia de roupa para o trabalho que a loja indica. E, se você usa maquiagem, leve o seu gloss ou batom para retocar ao longo do dia. Os clientes reparam em quem atende.", "img": 19672985}, {"art": "ola", "k": "Para chegar bem", "t": "Chegue com disposição para <mark>conversar</mark>", "p": ["Interagir com clientes e equipe é o que mais conta, mesmo no começo.", "<strong>Estude antes</strong>: leia as dicas e assista aos vídeos que a loja manda."], "n": "Chegue com disposição para conversar. Interagir com os clientes e com a equipe é o que mais conta, mesmo no começo. E estude antes: leia as dicas e assista aos vídeos que a loja manda, para já chegar sabendo atender.", "img": 6567728}, {"art": "idcard", "k": "Documentos", "t": "Vá separando os <mark>documentos</mark>", "p": ["A loja só pede <strong>depois de te chamar</strong>, para o termo de estágio.", "<strong>Atestado escolar</strong>: peça na escola ou faculdade com antecedência.", "RG e CPF, frente e verso.", "Comprovante de endereço, com endereço e CEP aparecendo."], "n": "Vá separando os documentos. A loja só pede depois de chamar você, para fazer o termo de estágio. Você vai precisar do atestado escolar, então peça na sua escola ou faculdade com antecedência. Também da identidade e do CPF, frente e verso, e de um comprovante de endereço em que apareçam o endereço e o CEP.", "img": 4145194}, {"art": "dupla", "k": "16 ou 17 anos", "t": "Seu responsável precisa <mark>saber e autorizar</mark>", "p": ["Mostre estas orientações a ele antes do primeiro dia.", "Ele manda <strong>RG e CPF dele</strong> também.", "E assina o termo de estágio junto com você."], "n": "Se você tem dezesseis ou dezessete anos, mostre estas orientações ao seu responsável. Ele precisa saber onde você vai estar, e autorizar antes do seu primeiro dia. Ele também manda a identidade e o CPF dele, e assina o termo de estágio junto com você.", "img": 8489049}, {"art": "check", "k": "Resumo", "t": "Para <mark>guardar</mark>", "p": ["Chegar 5 minutos antes, bem alimentada(o).", "Garrafinha e lanche de casa.", "Atestado escolar pedido com antecedência.", "Menor de 18: responsável sabe, autoriza e assina."], "n": "Para guardar: chegue cinco minutos antes, depois de se alimentar bem. Leve garrafinha e lanche de casa. Peça o atestado escolar com antecedência. E, se você tem menos de dezoito anos, o seu responsável precisa saber, autorizar e assinar.", "img": 3037550}]};
+  const ICONS = {"store": "<path d=\"M22 46 30 24h60l8 22\"/><path d=\"M22 46a9.500 9.500 0 0 0 19 0 9.500 9.500 0 0 0 19 0 9.500 9.500 0 0 0 19 0 9.500 9.500 0 0 0 19 0\"/><path d=\"M28 58v40h64V58\"/><rect class=\"a\" x=\"38\" y=\"68\" width=\"20\" height=\"16\" rx=\"2\"/><path d=\"M66 98V70h16v28\"/>", "display": "<rect x=\"32\" y=\"20\" width=\"56\" height=\"80\" rx=\"7\"/><circle class=\"f\" cx=\"60\" cy=\"32\" r=\"3\"/><path d=\"M48 46v12M72 46v12\"/><circle class=\"a\" cx=\"48\" cy=\"68\" r=\"9\"/><circle class=\"a\" cx=\"72\" cy=\"68\" r=\"9\"/>", "calendar": "<rect x=\"24\" y=\"30\" width=\"72\" height=\"66\" rx=\"9\"/><path d=\"M24 50h72M42 22v14M78 22v14\"/><circle class=\"f\" cx=\"42\" cy=\"64\" r=\"3.500\"/><circle class=\"f\" cx=\"60\" cy=\"64\" r=\"3.500\"/><circle class=\"f\" cx=\"42\" cy=\"80\" r=\"3.500\"/><circle class=\"a\" cx=\"72\" cy=\"76\" r=\"10\"/>", "doc": "<path d=\"M34 18h38l16 16v68H34z\"/><path d=\"M72 18v16h16\"/><path d=\"M46 52h30M46 66h30\"/><path class=\"a\" d=\"M46 86q6-12 11 0t11 0 10-5\"/>", "clock": "<circle cx=\"60\" cy=\"60\" r=\"40\"/><path d=\"M60 26v5M60 89v5M26 60h5M89 60h5\"/><path class=\"a\" d=\"M60 40v20l15 10\"/>", "coins": "<ellipse cx=\"46\" cy=\"56\" rx=\"24\" ry=\"9\"/><path d=\"M22 56v14a24 9 0 0 0 48 0V56\"/><path d=\"M22 70v14a24 9 0 0 0 48 0V70\"/><circle class=\"a\" cx=\"88\" cy=\"40\" r=\"15\"/><text class=\"tx\" x=\"88\" y=\"45\" text-anchor=\"middle\" font-size=\"13\">R$</text>", "shield": "<path d=\"M60 16 94 28v30c0 22-14 36-34 46-20-10-34-24-34-46V28z\"/><path class=\"a\" d=\"m44 60 11 11 21-23\"/>", "star": "<path class=\"a\" d=\"M60 26 68.800 49.900 94.200 50.900 74.300 66.600 81.200 91.100 60 77 38.800 91.100 45.700 66.600 25.800 50.900 51.200 49.900z\"/><path d=\"M98 20v10M93 25h10M20 88v8M16 92h8\"/>", "sprout": "<path d=\"M40 78h40l-5 24H45z\"/><path d=\"M60 78V50\"/><path class=\"a\" d=\"M60 62c-16 0-22-12-22-22 14 0 22 8 22 22zM60 50c0-14 8-24 22-24 0 14-8 24-22 24z\"/>", "ola": "<path d=\"M22 24h76a8 8 0 0 1 8 8v42a8 8 0 0 1-8 8H58L40 100V82H22a8 8 0 0 1-8-8V32a8 8 0 0 1 8-8z\"/><text class=\"tx\" x=\"60\" y=\"59\" text-anchor=\"middle\" font-size=\"17\">Bom dia!</text>", "eye": "<path d=\"M14 60c14-22 30-32 46-32s32 10 46 32c-14 22-30 32-46 32S28 82 14 60z\"/><circle class=\"a\" cx=\"60\" cy=\"60\" r=\"15\"/><circle class=\"af\" cx=\"60\" cy=\"60\" r=\"4\"/>", "pergunta": "<path d=\"M22 24h76a8 8 0 0 1 8 8v42a8 8 0 0 1-8 8H58L40 100V82H22a8 8 0 0 1-8-8V32a8 8 0 0 1 8-8z\"/><text class=\"tx\" x=\"60\" y=\"68\" text-anchor=\"middle\" font-size=\"42\">?</text>", "trio": "<path d=\"M32 26v16M60 26v16M88 26v16\"/><path d=\"M32 42c-13 16-13 40 0 40s13-24 0-40z\"/><path class=\"af\" d=\"M60 42c-13 16-13 40 0 40s13-24 0-40z\"/><path d=\"M88 42c-13 16-13 40 0 40s13-24 0-40z\"/>", "mirror": "<ellipse cx=\"60\" cy=\"48\" rx=\"27\" ry=\"32\"/><path d=\"M60 80v22M44 102h32\"/><path class=\"a\" d=\"M46 40q4-12 14-15\"/>", "necklace": "<path d=\"M24 22c0 44 18 62 36 62s36-18 36-62\"/><path class=\"af\" d=\"m60 84 11 12-11 12-11-12z\"/>", "bag": "<path d=\"M30 44h60l6 58H24z\"/><path d=\"M46 44v-8a14 14 0 0 1 28 0v8\"/><path class=\"af\" d=\"M60 88c-16-12-14-24-6-24 4 0 6 3 6 6 0-3 2-6 6-6 8 0 10 12-6 24z\"/>", "tag": "<path d=\"M54 18h46v46l-40 40-46-46z\"/><circle class=\"a\" cx=\"80\" cy=\"38\" r=\"7\"/><path d=\"m40 62 18 18\"/>", "heart": "<path class=\"a\" d=\"M60 98C18 68 22 28 44 28c10 0 16 8 16 16 0-8 6-16 16-16 22 0 26 40-16 70z\"/>", "pessoas": "<circle cx=\"28\" cy=\"48\" r=\"9\"/><path d=\"M14 94v-8a14 14 0 0 1 28 0v8\"/><circle cx=\"92\" cy=\"48\" r=\"9\"/><path d=\"M78 94v-8a14 14 0 0 1 28 0v8\"/><circle class=\"a\" cx=\"60\" cy=\"40\" r=\"10\"/><path class=\"a\" d=\"M44 94V82a16 16 0 0 1 32 0v12\"/>", "calma": "<path d=\"M22 24h76a8 8 0 0 1 8 8v42a8 8 0 0 1-8 8H58L40 100V82H22a8 8 0 0 1-8-8V32a8 8 0 0 1 8-8z\"/><path d=\"m34 46 8-8 8 8 8-8 8 8 8-8 8 8\"/><path class=\"a\" d=\"M34 66q8-8 16 0t16 0 16 0\"/>", "dupla": "<circle cx=\"40\" cy=\"44\" r=\"11\"/><path d=\"M22 94v-8a18 18 0 0 1 36 0v8\"/><circle class=\"a\" cx=\"82\" cy=\"40\" r=\"12\"/><path class=\"a\" d=\"M62 94V84a20 20 0 0 1 40 0v10\"/>", "swab": "<path d=\"M38 82 82 38\"/><circle cx=\"32\" cy=\"88\" r=\"9\"/><circle class=\"af\" cx=\"88\" cy=\"32\" r=\"10\"/><path d=\"M92 76v10M87 81h10M24 30v8M20 34h8\"/>", "phoneoff": "<rect x=\"40\" y=\"16\" width=\"40\" height=\"88\" rx=\"9\"/><path d=\"M54 92h12\"/><path class=\"a\" d=\"M22 100 98 20\"/>", "rings": "<circle cx=\"36\" cy=\"66\" r=\"18\"/><circle class=\"a\" cx=\"82\" cy=\"66\" r=\"18\" stroke-width=\"10\"/><path d=\"M82 26v9M102 36l-6 6M62 36l6 6\"/>", "dropoff": "<path d=\"M60 20C44 44 36 58 36 72a24 24 0 0 0 48 0c0-14-8-28-24-52z\"/><path class=\"a\" d=\"M24 100 96 28\"/>", "earcheck": "<path d=\"M46 18v16\"/><circle cx=\"46\" cy=\"52\" r=\"18\"/><circle class=\"af\" cx=\"84\" cy=\"84\" r=\"17\"/><path class=\"on\" d=\"m76 84 6 6 10-12\"/>", "swatches": "<circle cx=\"28\" cy=\"50\" r=\"16\" fill=\"#E7B3B8\"/><circle cx=\"60\" cy=\"50\" r=\"16\" fill=\"#DDA94B\"/><circle cx=\"92\" cy=\"50\" r=\"16\" fill=\"#C9A78E\"/><text class=\"tk\" x=\"26\" y=\"88\" text-anchor=\"middle\" font-size=\"10\">frio</text><text class=\"tk\" x=\"60\" y=\"88\" text-anchor=\"middle\" font-size=\"10\">quente</text><text class=\"tk\" x=\"95\" y=\"88\" text-anchor=\"middle\" font-size=\"10\">neutro</text>", "sun": "<circle class=\"a\" cx=\"86\" cy=\"34\" r=\"10\"/><path class=\"a\" d=\"M86 13v6M86 49v6M65 34h6M101 34h6M71 19l4 4M97 45l4 4M101 19l-4 4M75 45l-4 4\"/><rect x=\"32\" y=\"54\" width=\"32\" height=\"48\" rx=\"6\"/><rect x=\"40\" y=\"40\" width=\"16\" height=\"14\" rx=\"2\"/>", "jar": "<path d=\"M34 54h52v42a6 6 0 0 1-6 6H40a6 6 0 0 1-6-6z\"/><path d=\"M30 40 82 22l4 10-52 18z\"/><text class=\"tx\" x=\"60\" y=\"86\" text-anchor=\"middle\" font-size=\"19\">12M</text>", "pack": "<rect x=\"30\" y=\"22\" width=\"60\" height=\"80\" rx=\"7\"/><rect class=\"a\" x=\"40\" y=\"46\" width=\"40\" height=\"32\" rx=\"3\"/><path d=\"M47 58h26M47 68h16\"/>", "lunch": "<rect x=\"22\" y=\"42\" width=\"26\" height=\"60\" rx=\"8\"/><rect x=\"28\" y=\"26\" width=\"14\" height=\"16\" rx=\"3\"/><path class=\"a\" d=\"M22 66h26\"/><rect x=\"60\" y=\"62\" width=\"40\" height=\"40\" rx=\"7\"/><path d=\"M60 78h40M70 62v-9h20v9\"/>", "lipstick": "<rect x=\"42\" y=\"66\" width=\"36\" height=\"36\" rx=\"4\"/><rect x=\"48\" y=\"50\" width=\"24\" height=\"16\"/><path class=\"af\" d=\"M52 50V30l16-8v28z\"/>", "idcard": "<rect x=\"16\" y=\"32\" width=\"88\" height=\"58\" rx=\"9\"/><circle cx=\"40\" cy=\"54\" r=\"8\"/><path d=\"M28 78a12 12 0 0 1 24 0\"/><path class=\"a\" d=\"M64 50h28\"/><path d=\"M64 64h28M64 78h16\"/>", "check": "<circle cx=\"60\" cy=\"60\" r=\"40\"/><path class=\"a\" d=\"m42 60 13 13 25-27\" stroke-width=\"7\"/>"};
+  /*AULAS:END*/
+  function videosHtml() {
+    if (CONFIG.embedVideos) {
+      const cards = CONFIG.videosLoja.map((v, i) => {
+        const nome = esc(v.titulo || `Vídeo ${i + 1}`), id = encodeURIComponent(v.id);
+        return `<div class="yt" data-id="${id}" data-nome="${nome}"><button type="button" class="yt-play" aria-label="Tocar ${nome}"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy"><span class="yt-ico" aria-hidden="true"></span></button><div class="yt-meta"><span>${nome}${v.canal ? ` <span class="muted small">· ${esc(v.canal)}</span>` : ''}</span><a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">Abrir no YouTube</a></div></div>`;
+      }).join('');
+      return `<p>São os vídeos que a loja manda para quem vai começar. Assista antes da conversa na loja. Toque em um vídeo para assistir aqui mesmo. Eles gastam internet do celular: se puder, use Wi-Fi. Se algum não tocar, use "Abrir no YouTube".</p><div class="yts">${cards}</div>`;
+    }
+    const links = CONFIG.videosLoja.map((v, i) => `<a href="https://www.youtube.com/watch?v=${encodeURIComponent(v.id)}" target="_blank" rel="noopener"><span>${esc(v.titulo || `Vídeo ${i + 1}`)}${v.canal ? ` <span class="muted small">· ${esc(v.canal)}</span>` : ''}</span><span>Abrir</span></a>`).join('');
+    return `<p>São os vídeos que a loja manda para quem vai começar. Assista antes da conversa na loja. Eles abrem no YouTube, fora desta página, e gastam internet do celular: se puder, use Wi-Fi.</p><div class="vids">${links}</div>`;
+  }
+  document.addEventListener('click', ev => {
+    const btn = ev.target.closest && ev.target.closest('.yt-play');
+    if (!btn) return;
+    const card = btn.closest('.yt');
+    document.querySelectorAll('.yt iframe').forEach(f => { const c = f.closest('.yt'); if (c !== card) c.replaceChild(cartaz(c), f); });
+    pararNarracao();
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${card.dataset.id}?autoplay=1&rel=0&playsinline=1`;
+    f.title = card.dataset.nome;
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    card.replaceChild(f, btn);
+  });
+  function cartaz(card) {
+    const t = document.createElement('div'); 
+    t.innerHTML = `<button type="button" class="yt-play" aria-label="Tocar ${card.dataset.nome}"><img src="https://i.ytimg.com/vi/${card.dataset.id}/hqdefault.jpg" alt="" loading="lazy"><span class="yt-ico" aria-hidden="true"></span></button>`;
+    return t.firstChild;
+  }
+
+
+  /* ---------- Banco de perguntas (a: certa; w: erradas) ---------- */
+  const BANCO = [
+    // m2: situações de venda (atendimento que vende)
+    { id: 's2-01', m: 'm2', q: ['Você está arrumando um expositor e uma cliente entra olhando as vitrines. O que você faz?', 'Uma cliente entra enquanto você repõe as peças no balcão. Qual é a sua primeira atitude?'], a: 'Para o que está fazendo, cumprimenta com um sorriso e se coloca à disposição, sem pressionar', w: ['Termina de arrumar e só depois vê se ela precisa de algo', 'Vai direto até ela mostrar a promoção do dia', 'Espera ela chegar ao balcão para falar'] },
+    { id: 's2-02', m: 'm2', q: 'Uma cliente chega e diz: "Quero um brinco." Qual pergunta ajuda mais a acertar na sugestão?', a: '"É para você ou para presente? Vai usar em que ocasião?"', w: ['"Quanto você quer gastar?", antes de qualquer outra pergunta', '"Qual cor?", e mostrar todos os brincos dessa cor', 'Nenhuma: mostrar logo os mais vendidos'] },
+    { id: 's2-03', m: 'm2', q: 'Você se aproxima e a cliente responde: "Só estou olhando." O que fazer?', a: 'Dizer que ela fique à vontade e continuar por perto, caso ela precise', w: ['Insistir e mostrar os lançamentos assim mesmo', 'Ignorar a cliente até ela ir embora', 'Voltar para o celular até ela chamar'] },
+    { id: 's2-04', m: 'm2', q: 'Você já entendeu o que a cliente procura. Quantas peças mostrar primeiro?', a: 'Duas ou três que combinem com o que ela contou', w: ['Todas as peças da loja, para ela ter opção', 'Só uma: a mais cara', 'Nenhuma: ela escolhe sozinha'] },
+    { id: 's2-05', m: 'm2', q: 'A cliente vai a um casamento à noite, com um vestido verde de alça. Como você começa a ajudar?', a: 'Perguntando sobre o estilo dela e mostrando duas ou três peças que combinem com o vestido', w: ['Mostrando a peça mais cara da loja', 'Dizendo que qualquer peça dourada serve', 'Pedindo para ela voltar outro dia com o vestido'] },
+    { id: 's2-06', m: 'm2', q: ['A cliente decidiu levar um batom vermelho. O que faz sentido sugerir?', 'A cliente escolheu um colar dourado. Que sugestão faz sentido?'], a: 'Uma peça ou um produto que combine com a escolha dela, uma sugestão só, sem insistir', w: ['Cinco produtos diferentes, para aumentar a venda', 'Nada: sugerir mais é falta de educação', 'Um produto da promoção, mesmo que não combine'] },
+    { id: 's2-07', m: 'm2', q: 'A cliente gostou do colar, mas diz: "Está caro." Qual é a melhor resposta?', a: 'Explicar o acabamento, a durabilidade e os cuidados e, se ela quiser, mostrar uma opção mais em conta', w: ['Dar um desconto por conta própria para não perder a venda', 'Dizer que barato sai caro e encerrar o assunto', 'Concordar que está caro e deixar ela ir'] },
+    { id: 's2-08', m: 'm2', q: 'A cliente decidiu levar a peça. Antes de ela ir ao caixa, o que você faz?', a: 'Confirma a escolha, explica os cuidados com a peça e convida a voltar', w: ['Corre para atender a próxima pessoa', 'Pede uma avaliação nas redes antes de embalar', 'Comenta os preços de outras lojas'] },
+    { id: 's2-09', m: 'm2', q: 'Uma cliente quer um presente para a mãe, mas não sabe do que ela gosta. Como ajudar?', a: 'Perguntar sobre o jeito da mãe, as cores e se ela usa mais colar ou brinco, e mostrar poucas opções', w: ['Mostrar a vitrine inteira', 'Dizer que qualquer coisa serve', 'Indicar a peça mais cara, porque presente tem que ser caro'] },
+    { id: 's2-10', m: 'm2', q: 'A cliente pede desconto para levar duas peças. O que você faz?', a: 'Diz que vai verificar e chama a responsável pela loja, que é quem decide desconto', w: ['Dá o desconto que achar justo', 'Diz que não e encerra a conversa', 'Promete um desconto na próxima compra'] },
+    { id: 's2-11', m: 'm2', q: 'Durante o atendimento, quem deve falar mais?', a: 'A cliente: você pergunta e escuta mais do que fala', w: ['Você, para mostrar que entende do assunto', 'As duas ao mesmo tempo', 'Ninguém: o produto se vende sozinho'] },
+    // m3: lidando com o público
+    { id: 's3-01', m: 'm3', q: 'Uma cliente volta irritada: o brinco que comprou escureceu em uma semana. O que fazer primeiro?', a: 'Ouvir sem interromper e mostrar que entendeu o problema', w: ['Explicar logo que a culpa é dela, que molhou a peça', 'Pedir que ela volte outro dia', 'Discutir até ela entender'] },
+    { id: 's3-02', m: 'm3', q: 'A cliente pede uma troca fora do que você pode resolver. E agora?', a: 'Chamar a responsável pela loja e acompanhar até resolver', w: ['Resolver do seu jeito para agradar', 'Dizer que não tem jeito', 'Pedir que ela volte quando a responsável estiver'] },
+    { id: 's3-03', m: 'm3', q: 'Uma cliente quer testar um batom antes de comprar. Como fazer?', a: 'Com aplicador descartável, sem passar o produto direto na boca dela', w: ['Passar o batom direto na boca da cliente', 'Usar o mesmo pincel com todas as clientes', 'Não deixar testar nada'] },
+    { id: 's3-04', m: 'm3', q: 'A loja está cheia, você está atendendo e outra cliente espera. O que você faz?', a: 'Faz contato com ela, avisa que já vai atender e não deixa ninguém sem resposta', w: ['Finge que não viu, para não se apressar', 'Larga a cliente que está atendendo', 'Deixa a que espera ir embora'] },
+    { id: 's3-05', m: 'm3', q: 'Entram duas clientes: uma muito arrumada e outra de chinelo e roupa simples. Como atender?', a: 'Com a mesma atenção e o mesmo respeito, sem julgar pela aparência', w: ['Dar prioridade a quem parece ter mais dinheiro', 'Deixar a de chinelo para depois', 'Atender só quem pedir ajuda'] },
+    { id: 's3-06', m: 'm3', q: 'Seu celular vibra no meio de um atendimento. O que fazer?', a: 'Continuar dando atenção à cliente e ver o celular depois', w: ['Atender, porque pode ser importante', 'Pedir que a cliente espere enquanto você responde', 'Olhar rapidinho sem falar nada'] },
+    { id: 's3-07', m: 'm3', q: 'A cliente pergunta se a peça tem garantia, e você não sabe. O que dizer?', a: 'Que vai confirmar com a equipe, em vez de inventar uma resposta', w: ['Inventar uma resposta para não parecer insegura(o)', 'Dizer que ninguém sabe', 'Mudar de assunto'] },
+    { id: 's3-08', m: 'm3', q: 'A cliente olhou bastante, agradeceu e não comprou. O que fazer?', a: 'Agradecer a visita com simpatia e convidar a voltar', w: ['Mostrar que ficou chateada(o) por perder tempo', 'Insistir até ela levar alguma coisa', 'Não responder quando ela se despede'] },
+    // m4: produtos na hora da venda
+    { id: 's4-01', m: 'm4', q: 'A cliente pergunta por que a semijoia custa mais que a bijuteria. O que explicar?', a: 'Que a semijoia tem um banho mais grosso de metal nobre e dura mais', w: ['Que não tem diferença, é só a marca', 'Que a bijuteria é de ouro maciço', 'Que a semijoia é de plástico'] },
+    { id: 's4-02', m: 'm4', q: 'A cliente pergunta se pode ir à praia com o colar novo. O que responder?', a: 'Que é melhor não: água, perfume e cremes estragam o banho da peça', w: ['Que pode, sem problema nenhum', 'Que pode, se passar perfume antes', 'Que só não pode dormir com ele'] },
+    { id: 's4-03', m: 'm4', q: 'A cliente conta que a orelha coça com alguns brincos. O que indicar?', a: 'Peças antialérgicas, sem níquel', w: ['Qualquer peça: alergia a metal não existe', 'Peças com mais níquel', 'Que ela não use mais brincos'] },
+    { id: 's4-04', m: 'm4', q: 'A cliente quer saber se a cor da base combina com ela. Onde fazer o teste?', a: 'Na linha do maxilar ou no pescoço, com boa luz', w: ['Na palma da mão', 'No pulso, num canto escuro da loja', 'Não precisa testar'] },
+    { id: 's4-05', m: 'm4', q: 'A cliente pergunta se o rímel é à prova d\'água, e a embalagem não diz isso. O que responder?', a: 'Que a embalagem não indica e, se houver, mostrar uma opção que seja', w: ['Que é, para garantir a venda', 'Que toda maquiagem é à prova d\'água', 'Que não sabe e mudar de assunto'] },
+    { id: 's4-06', m: 'm4', q: 'Você vai pegar uma maquiagem no estoque para a cliente. O que conferir antes de entregar?', a: 'A validade e se a embalagem está lacrada e em bom estado', w: ['Só a cor', 'Só o preço', 'Nada: maquiagem não vence'] },
+    // m5: rotina e alimentação saudável na loja
+    { id: 's5-01', m: 'm5', q: 'Você vai para o estágio logo depois da aula. O que fazer antes de sair?', a: 'Comer bem antes de sair, para manter a energia durante as cinco horas', w: ['Ir em jejum, para não perder tempo', 'Comer só balas no caminho', 'Esperar a loja fechar para comer'] },
+    { id: 's5-02', m: 'm5', q: 'Você está há duas horas atendendo e sente sede. Qual é o hábito certo?', a: 'Beber água da sua garrafinha, que você enche no filtro da loja', w: ['Esperar o fim do estágio para beber', 'Sair para comprar refrigerante no meio do atendimento', 'Ficar sem beber para não precisar sair do salão'] },
+    { id: 's5-03', m: 'm5', q: 'Qual é a orientação da loja sobre o lanche?', a: 'Levar um lanche de casa e evitar comida de rua', w: ['Comprar salgado na rua todo dia', 'Ficar as cinco horas sem comer', 'Pedir lanche às colegas'] },
+    { id: 's5-04', m: 'm5', q: 'Qual destes lanches para levar de casa ajuda mais a manter a energia na loja?', a: 'Uma fruta e um sanduíche feito em casa', w: ['Um pacote de salgadinho', 'Refrigerante e biscoito recheado', 'Só café, sem comer nada'] },
+    { id: 's5-05', m: 'm5', q: ['Quanto tempo antes do seu horário vale chegar na loja?', 'Qual é o hábito de chegada que a loja recomenda?'], a: '5 minutos antes, para lavar as mãos, beber água e entrar pronta(o)', w: ['Na hora exata, correndo', 'Uma hora antes, sem avisar ninguém', 'Tanto faz, se chegar até 20 minutos depois'] },
+    // v: vídeos indicados pela loja
+    { id: 'v-01', m: 'v', q: 'No vídeo "Você se prepara para o dia?", o que fazer ao chegar na loja, antes de começar a atender?', a: 'Conferir a vitrine, as promoções, as formas de pagamento e as mercadorias novas', w: ['Guardar as coisas e esperar o primeiro cliente', 'Ver o celular até alguém entrar', 'Disputar quem atende primeiro'] },
+    { id: 'v-02', m: 'v', q: 'Segundo o vídeo "Qual a melhor forma de abordagem?", como deve ser o primeiro contato com quem entra na loja?', a: 'Natural e sem pressão: é o momento de conquistar a confiança da cliente', w: ['Ir com tudo, porque é preciso vender', 'Dizer uma frase decorada, igual para todo mundo', 'Esperar de longe a cliente falar primeiro'] },
+    { id: 'v-03', m: 'v', q: 'No vídeo sobre abordagem, o que pesa mais do que as palavras que você usa?', a: 'O que a cliente percebe: que você quer mesmo ajudar', w: ['Falar bem rápido', 'Usar sempre a mesma frase', 'Falar o preço logo no começo'] },
+    { id: 'v-04', m: 'v', q: 'Uma cliente olha uma pulseira banhada a ouro. Pela técnica do vídeo "Técnica infalível para encantar o cliente", como apresentar?', a: 'Ligar a característica a um benefício para ela: o banho deixa a peça bonita por mais tempo, e ela vai usar muito', w: ['Listar de uma vez todas as características da peça', 'Só dizer o preço', 'Dizer que é a mais vendida e parar por aí'] },
+    { id: 'v-05', m: 'v', q: 'Segundo o vídeo da técnica para encantar, o que acontece quando a vendedora lista muitas características de uma vez?', a: 'Confunde mais do que ajuda: a cliente ouve, mas não entende as vantagens', w: ['A cliente compra mais rápido', 'A cliente fica mais confiante', 'Não faz diferença nenhuma'] },
+    { id: 'v-06', m: 'v', q: 'Segundo o vídeo "Como encantar o cliente?", o que mais encanta a cliente?', a: 'Conhecer bem os produtos e o atendimento, com atitude positiva', w: ['Elogios e frases bonitas', 'Dar brinde em toda compra', 'Falar rápido para atender mais gente'] },
+    { id: 'v-07', m: 'v', q: 'Uma cliente responde seco e mal olha para você. O que ensina o vídeo "Como lidar com clientes difíceis"?', a: 'Não levar para o lado pessoal e continuar oferecendo ajuda de verdade', w: ['Responder do mesmo jeito', 'Parar de atender e deixar ela sozinha', 'Comentar com a colega na frente dela'] },
+    { id: 'v-08', m: 'v', q: 'Segundo o vídeo sobre clientes difíceis, por que muitas clientes chegam na defensiva?', a: 'Porque já foram pressionadas por vendedores em outras lojas', w: ['Porque não gostam de comprar', 'Porque já conhecem você', 'Porque a loja está cheia'] },
+    { id: 'v-09', m: 'v', q: 'Uma cliente saiu sem comprar. Qual é a atitude proativa, como no vídeo "Seja proativo"?', a: 'Pensar no que você pode fazer melhor no próximo atendimento', w: ['Culpar a cliente, que era chata', 'Culpar o preço da loja', 'Culpar a colega que atendeu antes'] },
+    { id: 'v-10', m: 'v', q: 'No vídeo "Um ótimo e um péssimo atendimento ao mesmo tempo", por que a cliente se decepcionou na segunda visita?', a: 'Foi atendida por outra vendedora, de má vontade: a loja não tinha um padrão de atendimento', w: ['O preço tinha subido', 'A loja estava fechada', 'O produto tinha acabado'] },
+    { id: 'v-11', m: 'v', q: 'A cliente diz: "Esse produto não presta." Segundo o vídeo sobre objeções, o que fazer?', a: 'Não discutir: entender por que ela pensa assim e mostrar melhor o produto', w: ['Dizer na hora que ela está errada', 'Concordar e tirar o produto da vista', 'Oferecer desconto por conta própria'] },
+    { id: 'v-12', m: 'v', q: 'A cliente diz: "Vou dar uma volta e depois eu volto." O que o vídeo sobre objeções ensina?', a: 'Muitas vezes não é o motivo real: vale entender, sem pressionar, o que ainda falta para ela decidir', w: ['Pressionar dizendo que a promoção acaba hoje', 'Mostrar que ficou chateada(o)', 'Deixar ela ir sem perguntar nada'] },
+    { id: 'v-13', m: 'v', q: 'Segundo o vídeo "O vendedor tímido", uma pessoa mais reservada pode vender bem?', a: 'Sim: o que pesa é conhecer os produtos e as técnicas de venda, não ser falante', w: ['Não: vendas é só para quem fala muito', 'Só se mudar o jeito de ser', 'Só quando a loja está vazia'] }
+  ];
+
+  /* ---------- Perguntas prévias ---------- */
+  const ESTUDANDO = a => a.nivel && a.nivel !== 'Não estou estudando agora';
+  const PERGUNTAS = [
+    { secao: 'Você' },
+    { id: 'nome', tipo: 'texto', rotulo: 'Seu nome e sobrenome', auto: 'name', obrig: true },
+    { id: 'bairro', tipo: 'texto', rotulo: 'Em que bairro você mora?', dica: 'No fim, a página mostra as nossas lojas mais perto de você.', obrig: true },
+    { id: 'idade', tipo: 'radio', rotulo: 'Você tem 16 anos ou mais?', ajuda: 'Perguntamos só por causa da documentação: o estágio é permitido a partir de 16 anos.', opcoes: [['18+', 'Sim, tenho 18 anos ou mais'], ['16-17', 'Sim, tenho 16 ou 17 anos'], ['<16', 'Ainda não tenho 16 anos']], obrig: true },
+    { secao: 'Seus estudos', nota: 'Para estagiar, a lei exige estar matriculada(o) e indo às aulas.' },
+    { id: 'nivel', tipo: 'radio', rotulo: 'O que você estuda hoje?', opcoes: ['Ensino médio', 'Curso técnico', 'Faculdade (presencial ou EAD)', 'EJA', 'Não estou estudando agora'], obrig: true },
+    { id: 'instituicao', tipo: 'texto', rotulo: 'Nome da escola ou faculdade', obrig: true, quando: ESTUDANDO },
+    { id: 'curso', tipo: 'texto', rotulo: 'Qual curso?', obrig: true, quando: a => a.nivel === 'Curso técnico' || a.nivel === 'Faculdade (presencial ou EAD)' },
+    { id: 'serie', tipo: 'texto', rotulo: 'Série, módulo ou semestre', dica: 'Ex.: 2º ano, 3º semestre', obrig: true, quando: ESTUDANDO },
+    { id: 'turno', tipo: 'radio', rotulo: 'Em que turno são suas aulas?', opcoes: ['Manhã', 'Tarde', 'Noite', 'Integral', 'EAD, com horário livre'], obrig: true, quando: ESTUDANDO },
+    { id: 'frequenta', tipo: 'radio', rotulo: 'Você está indo às aulas normalmente?', opcoes: [['sim', 'Sim, estou frequentando'], ['parou', 'Estou matriculada(o), mas parei de ir']], obrig: true, quando: ESTUDANDO },
+    { secao: 'Experiência e afinidade' },
+    { id: 'exp', tipo: 'radio', rotulo: 'Você já trabalhou ou estagiou?', ajuda: 'Experiência não é obrigatória: estágio é para aprender.', opcoes: [['nao', 'Ainda não'], ['vendas', 'Sim, com vendas ou atendimento'], ['outra', 'Sim, em outra área']], obrig: true },
+    { id: 'expDetalhe', tipo: 'texto', rotulo: 'Onde e por quanto tempo? (opcional)', obrig: false, quando: a => a.exp === 'vendas' || a.exp === 'outra' },
+    { id: 'acessorios', tipo: 'radio', rotulo: 'Você usa ou gosta de acessórios?', opcoes: ['Uso todo dia', 'Uso de vez em quando', 'Não uso, mas gosto de ver e combinar', 'Não tenho muito interesse'], obrig: true },
+    { id: 'maquiagem', tipo: 'radio', rotulo: 'E maquiagem, como você se sai?', opcoes: ['Faço produções completas', 'Faço o básico do dia a dia', 'Estou aprendendo', 'Não uso maquiagem'], obrig: true }
+  ];
+  const BLOQUEIOS = {
+    idade: { valor: '<16', texto: 'O estágio só é permitido a partir de 16 anos. Quando você fizer 16, volte aqui: vamos gostar de te conhecer.' },
+    nivel: { valor: 'Não estou estudando agora', texto: 'Para estagiar, a lei exige estar matriculada(o) e indo às aulas. Se você voltar a estudar, volte aqui.' },
+    frequenta: { valor: 'parou', texto: 'Para estagiar, a lei exige frequência nas aulas. Quando voltar a frequentar, volte aqui.' }
+  };
+
+  /* ---------- Estado ---------- */
+  const KEY = 'estagio-piloto-v2';
+  const SALT = 'ponte-piloto-estagio-2026';
+  const byId = Object.fromEntries(BANCO.map(q => [q.id, q]));
+  const $ = id => document.getElementById(id);
+  const blank = () => ({ answers: {}, perguntasOk: false, modules: {}, attempts: [], quiz: null, gerouMensagem: false, view: 'inicio', moduloAtual: null, slides: {} });
+  let state = blank();
+  let lojaDoLink = null;
+
+  function load() { try { const raw = localStorage.getItem(KEY); return raw ? JSON.parse(raw) : null; } catch (e) { return null; } }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* armazenamento indisponível: segue só na memória */ } }
+  function clearSaved() { try { localStorage.removeItem(KEY); } catch (e) { } }
+
+  const lojaPor = slug => CONFIG.lojas.find(l => l.slug === slug) || null;
+  const lojaRotulo = l => l ? `${l.marca} · ${l.bairro}` : '';
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const optVal = o => Array.isArray(o) ? o[0] : o;
+  const optLabel = o => Array.isArray(o) ? o[1] : o;
+  function rotuloDe(id, valor) {
+    const p = PERGUNTAS.find(x => x.id === id);
+    if (!p || !p.opcoes) return valor;
+    const o = p.opcoes.find(x => optVal(x) === valor);
+    return o ? optLabel(o) : valor;
+  }
+
+  function rand() {
+    try { const u = new Uint32Array(1); crypto.getRandomValues(u); return u[0] / 4294967296; } catch (e) { return Math.random(); }
+  }
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+  }
+
+  /* ---------- Avaliação ---------- */
+  function usadas() { const s = new Set(); state.attempts.forEach(t => (t.ids || []).forEach(id => s.add(id))); return s; }
+  function montarAvaliacao() {
+    const ja = usadas();
+    const itens = [];
+    Object.entries(CONFIG.composicao).forEach(([tema, n]) => {
+      const pool = BANCO.filter(q => q.m === tema);
+      const novas = pool.filter(q => !ja.has(q.id));
+      const fonte = novas.length >= n ? novas : pool;
+      shuffle(fonte).slice(0, n).forEach(q => itens.push(q));
+    });
+    return {
+      inicio: new Date().toISOString(), idx: 0,
+      itens: shuffle(itens).map(q => {
+        const n = Array.isArray(q.q) ? q.q.length : 1;
+        return { id: q.id, v: Math.floor(rand() * n), ordem: shuffle([0, 1, 2, 3]), escolha: null };
+      })
+    };
+  }
+  const textoPergunta = (q, v) => Array.isArray(q.q) ? q.q[v] : q.q;
+  const textoOpcao = (q, k) => k === 0 ? q.a : q.w[k - 1];
+  function corrigir(quiz) {
+    const por = {};
+    let nota = 0;
+    quiz.itens.forEach(it => {
+      const q = byId[it.id];
+      por[q.m] = por[q.m] || [0, 0];
+      por[q.m][1]++;
+      if (it.escolha === 0) { nota++; por[q.m][0]++; }
+    });
+    return { nota, total: quiz.itens.length, por };
+  }
+  const totalPerguntas = () => Object.values(CONFIG.composicao).reduce((a, b) => a + b, 0);
+  const melhor = () => state.attempts.reduce((b, t) => (t.nota > b ? t.nota : b), -1);
+
+  /* ---------- Mensagem e código de conferência ---------- */
+  function cyrb53(str, seed = 0) {
+    let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
+    for (let i = 0, ch; i < str.length; i++) {
+      ch = str.charCodeAt(i);
+      h1 = Math.imul(h1 ^ ch, 2654435761);
+      h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+    h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+    h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+    return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+  }
+  const norm = s => String(s || '').replace(/[*_~]/g, '').replace(/\s+/g, ' ').trim();
+  function codigo(nome, loja, avaliacao, enviado) {
+    const h = cyrb53([norm(nome), norm(loja), norm(avaliacao), norm(enviado), SALT].join('|')).toString(36).toUpperCase().padStart(8, '0');
+    const c = h.slice(-8);
+    return `${c.slice(0, 4)}-${c.slice(4)}`;
+  }
+  function dataHora(d) {
+    const p = n => String(n).padStart(2, '0');
+    return `${p(d.getDate())}/${p(d.getMonth() + 1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`;
+  }
+  function linhaAvaliacao() {
+    const notas = state.attempts.map(t => t.nota);
+    if (!notas.length) return 'não feita';
+    const total = state.attempts[0].total;
+    return `${melhor()} de ${total} (tentativas: ${notas.join(', ')})`;
+  }
+  function dadosResumo() {
+    const a = state.answers;
+    const loja = lojaPor(a.loja);
+    const estudo = ESTUDANDO(a)
+      ? [a.nivel, a.curso, a.instituicao, a.serie, a.turno ? `aulas: ${a.turno.toLowerCase()}` : '', a.frequenta === 'sim' ? 'frequentando' : ''].filter(Boolean).join(' · ')
+      : (a.nivel || '');
+    const exp = (rotuloDe('exp', a.exp) || '') + (a.expDetalhe ? ` (${a.expDetalhe})` : '');
+    const concluidos = CORE.filter(m => state.modules[m.id]).length;
+    return [
+      ['Nome', a.nome || ''],
+      ['Loja', lojaRotulo(loja)],
+      ['Idade', a.idade === '16-17' ? '16 ou 17 anos (o responsável assina o termo junto)' : (a.idade === '18+' ? '18 anos ou mais' : '')],
+      ['Bairro', a.bairro || ''],
+      ['Distância até a loja', distanciaTexto(loja, a.lojaKm)],
+      ['Estudo', estudo],
+      ['Experiência', exp],
+      ['Acessórios', a.acessorios || ''],
+      ['Maquiagem', a.maquiagem || ''],
+      ['Minicurso', `${concluidos} de ${CORE.length} módulos`],
+      ['Vídeos da loja', state.modules.v ? 'marcou como assistidos' : 'não marcou como assistidos'],
+      ['Avaliação', linhaAvaliacao()],
+      ['Outras vagas das lojas', a.outrasVagas ? 'sim' : 'não'],
+      ['Avisos de vagas de parceiros', a.parceiros ? 'sim' : 'não']
+    ];
+  }
+  function montarMensagem() {
+    const linhas = dadosResumo();
+    const get = k => (linhas.find(l => l[0] === k) || [k, ''])[1];
+    const enviado = dataHora(new Date());
+    const cod = codigo(get('Nome'), get('Loja'), get('Avaliação'), enviado);
+    const bloco = ks => ks.map(k => `${k}: ${get(k)}`).join('\n');
+    return [
+      '*Candidatura a estágio*',
+      bloco(['Nome', 'Loja']),
+      '',
+      '*Perguntas*',
+      bloco(['Bairro', 'Distância até a loja', 'Idade', 'Estudo', 'Experiência', 'Acessórios', 'Maquiagem']),
+      '',
+      '*Minicurso e avaliação*',
+      bloco(['Minicurso', 'Vídeos da loja', 'Avaliação']),
+      '',
+      '*Permissões*',
+      bloco(['Outras vagas das lojas', 'Avisos de vagas de parceiros']),
+      '',
+      `Enviado em: ${enviado}`,
+      `Código: ${cod}`
+    ].join('\n');
+  }
+  function conferir(texto) {
+    const linhas = String(texto || '').split(/\r?\n/).map(norm);
+    const campo = rotulo => {
+      const l = linhas.find(x => x.toLowerCase().startsWith(rotulo.toLowerCase() + ':'));
+      return l ? l.slice(rotulo.length + 1).trim() : null;
+    };
+    const nome = campo('Nome'), loja = campo('Loja'), av = campo('Avaliação'), env = campo('Enviado em'), cod = campo('Código');
+    if ([nome, loja, av, env, cod].some(v => v === null)) return { ok: null };
+    return { ok: codigo(nome, loja, av, env) === cod.toUpperCase(), nome, loja, av, env };
+  }
+
+  /* ---------- Navegação ---------- */
+  const VIEWS = ['inicio', 'perguntas', 'minicurso', 'modulo', 'avaliacao', 'resultado', 'envio', 'equipe'];
+  // Cada etapa vira uma página no histórico do navegador: o botão ou o gesto de voltar do celular
+  // volta para a etapa anterior (e fecha a aula aberta) em vez de sair do site.
+  let pelaSeta = false, profundidade = 0;
+  function marcarHistorico(view, anterior, opts) {
+    const st = { app: 'estagio', view, mod: view === 'modulo' ? state.moduloAtual : null, d: profundidade };
+    try {
+      if (opts.inicial || pelaSeta || view === anterior || view === 'equipe') history.replaceState(st, '', location.href);
+      else { st.d = ++profundidade; history.pushState(st, '', location.href); }
+    } catch (e) { /* sem histórico: segue normal */ }
+  }
+  window.addEventListener('popstate', e => {
+    const st = e.state;
+    if (!st || st.app !== 'estagio' || !VIEWS.includes(st.view) || st.view === 'equipe') return;
+    profundidade = st.d || 0;
+    pelaSeta = true;
+    try {
+      if (st.view === 'modulo' && MODULOS.some(m => m.id === st.mod)) state.moduloAtual = st.mod;
+      show(st.view);
+    } finally { pelaSeta = false; }
+  });
+  function fecharAula() {
+    const st = history.state;
+    if (st && st.app === 'estagio' && st.view === 'modulo' && st.d > 0) { try { history.back(); return; } catch (e) { } }
+    show('minicurso');
+  }
+  function show(view, opts = {}) {
+    if (view !== 'modulo') { pararNarracao(); fecharStory(); }
+    const anterior = state.view;
+    state.view = view;
+    VIEWS.forEach(v => { $('v-' + v).hidden = v !== view; });
+    if (view === 'inicio') renderInicio();
+    if (view === 'perguntas') renderPerguntas();
+    if (view === 'minicurso') renderMinicurso();
+    if (view === 'modulo') renderModulo();
+    if (view === 'avaliacao') renderAvaliacao();
+    if (view === 'resultado') renderResultado();
+    if (view === 'envio') renderEnvio();
+    if (view === 'equipe') renderEquipe();
+    renderProgresso();
+    if (state.view === view) marcarHistorico(view, anterior, opts);
+    if (view !== 'equipe') save();
+    if (!opts.semFoco) {
+      window.scrollTo(0, 0);
+      const h = $('h-' + view);
+      if (h) { try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+    }
+  }
+  function etapaAtual() {
+    const v = state.view;
+    if (v === 'perguntas') return 'perguntas';
+    if (v === 'minicurso' || v === 'modulo') return 'minicurso';
+    if (v === 'avaliacao' || v === 'resultado') return 'avaliacao';
+    if (v === 'envio') return 'envio';
+    return null;
+  }
+  function renderProgresso() {
+    const feito = {
+      perguntas: state.perguntasOk,
+      minicurso: CORE.every(m => state.modules[m.id]),
+      avaliacao: state.attempts.length > 0,
+      envio: state.gerouMensagem
+    };
+    const atual = etapaAtual();
+    document.querySelectorAll('#swatches li').forEach(li => {
+      const s = li.dataset.step;
+      const st = feito[s] ? 'done' : (s === atual ? 'current' : 'todo');
+      li.dataset.state = st;
+      if (s === atual) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+      li.querySelector('[data-sr]').textContent = `: ${st === 'done' ? 'concluído' : (st === 'current' ? 'em andamento' : 'a fazer')}`;
+    });
+    const loja = lojaPor(state.answers.loja);
+    $('topLoja').textContent = loja ? `· ${lojaRotulo(loja)}` : '';
+  }
+
+  /* ---------- Abertura ---------- */
+  function proximaEtapa() {
+    if (!state.perguntasOk) return 'perguntas';
+    if (!CORE.every(m => state.modules[m.id])) return 'minicurso';
+    if (!state.attempts.length || state.quiz) return 'avaliacao';
+    return 'envio';
+  }
+  function temProgresso() {
+    const a = state.answers;
+    const respondeu = Object.keys(a).some(k => k !== 'loja' && k !== 'lojaKm' && (Array.isArray(a[k]) ? a[k].length : !!a[k]));
+    return state.perguntasOk || respondeu || state.attempts.length > 0 || Object.keys(state.modules).length > 0;
+  }
+  function renderInicio() {
+    const box = $('inicioLojas');
+    const doLink = lojaPor(lojaDoLink);
+    box.innerHTML = `<p class="small muted">Lojas participantes</p><ul class="trust">${CONFIG.lojas.map(l => `<li>${esc(lojaRotulo(l))}${l.endereco ? ` <span class="muted">· ${esc(l.endereco)}</span>` : ''}</li>`).join('')}</ul>`
+      + `<p class="small muted">${doLink ? `Você chegou pelo link da ${esc(lojaRotulo(doLink))}. ` : ''}No fim, você vê as lojas mais perto de você e escolhe para qual mandar.</p>`;
+    const acoes = $('inicioAcoes');
+    acoes.innerHTML = '';
+    if (temProgresso()) {
+      acoes.append(botao('Continuar de onde parei', 'btn btn-primary btn-block', () => show(proximaEtapa())));
+      const rec = botao('Recomeçar do zero', 'btn btn-ghost', null);
+      let armado = false, t = null;
+      rec.addEventListener('click', () => {
+        if (!armado) { armado = true; rec.textContent = 'Toque de novo para apagar tudo'; t = setTimeout(() => { armado = false; rec.textContent = 'Recomeçar do zero'; }, 4000); return; }
+        clearTimeout(t); recomecar();
+      });
+      acoes.append(rec);
+    } else {
+      acoes.append(botao('Começar', 'btn btn-primary btn-block', () => show('perguntas')));
+    }
+  }
+  function botao(texto, cls, fn) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = cls; b.textContent = texto;
+    if (fn) b.addEventListener('click', fn);
+    return b;
+  }
+  function recomecar() {
+    state = blank();
+    clearSaved();
+    formMontado = false;
+    show('inicio');
+  }
+
+  /* ---------- Perguntas ---------- */
+  let formMontado = false;
+  function montarForm() {
+    const box = $('formCampos');
+    box.innerHTML = '';
+    PERGUNTAS.forEach(p => {
+      if (p.secao) {
+        const h = document.createElement('h3');
+        h.className = 'sec-title'; h.textContent = p.secao;
+        box.append(h);
+        if (p.nota) { const n = document.createElement('p'); n.className = 'help'; n.textContent = p.nota; box.append(n); }
+        return;
+      }
+      const wrap = document.createElement(p.tipo === 'radio' || p.tipo === 'checks' ? 'fieldset' : 'div');
+      wrap.className = 'field'; wrap.id = 'f-' + p.id;
+      if (p.tipo === 'texto') {
+        wrap.innerHTML = `<label class="q" for="${p.id}">${esc(p.rotulo)}</label>${p.dica ? `<p class="help" id="h-${p.id}">${esc(p.dica)}</p>` : ''}<input type="text" id="${p.id}" name="${p.id}" ${p.auto ? `autocomplete="${p.auto}"` : 'autocomplete="off"'} ${p.dica ? `aria-describedby="h-${p.id}"` : ''}>`;
+      } else {
+        const tipo = p.tipo === 'checks' ? 'checkbox' : 'radio';
+        wrap.innerHTML = `<legend>${esc(p.rotulo)}</legend>${p.ajuda ? `<p class="help">${esc(p.ajuda)}</p>` : ''}<div class="opts">${p.opcoes.map((o, i) => `<label class="opt"><input type="${tipo}" id="${p.id}-${i}" name="${p.id}" value="${esc(optVal(o))}"><span>${esc(optLabel(o))}</span></label>`).join('')}</div>`;
+      }
+      const err = document.createElement('p');
+      err.className = 'err'; err.id = 'e-' + p.id; err.hidden = true;
+      wrap.append(err);
+      if (BLOQUEIOS[p.id]) {
+        const n = document.createElement('div');
+        n.className = 'note note-warn'; n.id = 'b-' + p.id; n.hidden = true; n.setAttribute('role', 'status');
+        n.innerHTML = `<p>${esc(BLOQUEIOS[p.id].texto)}</p>`;
+        wrap.append(n);
+      }
+      box.append(wrap);
+    });
+    formMontado = true;
+  }
+  function lerForm() {
+    const a = state.answers;
+    PERGUNTAS.forEach(p => {
+      if (!p.id) return;
+      if (p.tipo === 'texto') a[p.id] = $(p.id).value.trim();
+      else if (p.tipo === 'radio') { const c = document.querySelector(`input[name="${p.id}"]:checked`); a[p.id] = c ? c.value : ''; }
+      else if (p.tipo === 'checks') a[p.id] = Array.from(document.querySelectorAll(`input[name="${p.id}"]:checked`)).map(i => i.value);
+    });
+    a.privacidadeOk = $('privacidadeOk').checked;
+    a.outrasVagas = $('outrasVagas').checked;
+    a.parceiros = $('parceiros').checked;
+  }
+  function preencherForm() {
+    const a = state.answers;
+    PERGUNTAS.forEach(p => {
+      if (!p.id) return;
+      const v = a[p.id];
+      if (p.tipo === 'texto') $(p.id).value = v || '';
+      else if (p.tipo === 'radio') document.querySelectorAll(`input[name="${p.id}"]`).forEach(i => { i.checked = i.value === v; });
+      else if (p.tipo === 'checks') document.querySelectorAll(`input[name="${p.id}"]`).forEach(i => { i.checked = Array.isArray(v) && v.includes(i.value); });
+    });
+    $('privacidadeOk').checked = !!a.privacidadeOk;
+    $('outrasVagas').checked = !!a.outrasVagas;
+    $('parceiros').checked = !!a.parceiros;
+  }
+  function atualizarCondicionais() {
+    const a = state.answers;
+    PERGUNTAS.forEach(p => {
+      if (!p.id) return;
+      const visivel = p.quando ? !!p.quando(a) : true;
+      $('f-' + p.id).hidden = !visivel;
+      const b = $('b-' + p.id);
+      if (b) b.hidden = !(visivel && a[p.id] === BLOQUEIOS[p.id].valor);
+    });
+    const loja = lojaPor(a.loja);
+    $('privEmpresa').textContent = loja && loja.empresa ? loja.empresa : (loja ? `a empresa responsável pela loja ${lojaRotulo(loja)}` : 'a empresa responsável pela loja que você escolher no fim');
+    $('privRetencao').textContent = CONFIG.retencao;
+    $('privYoutube').hidden = !CONFIG.embedVideos;
+  }
+  function validar() {
+    const a = state.answers;
+    const faltas = [];
+    let bloqueio = null;
+    PERGUNTAS.forEach(p => {
+      if (!p.id) return;
+      const visivel = p.quando ? !!p.quando(a) : true;
+      const f = $('f-' + p.id), e = $('e-' + p.id);
+      f.removeAttribute('data-invalid'); e.hidden = true;
+      if (!visivel) return;
+      const v = a[p.id];
+      let msg = '';
+      if (p.obrig) {
+        if (p.tipo === 'checks' && (!v || !v.length)) msg = 'Marque pelo menos uma opção.';
+        else if (p.tipo !== 'checks' && !v) msg = p.tipo === 'texto' ? 'Preencha este campo.' : 'Escolha uma opção.';
+        else if (p.id === 'nome' && v.length < 3) msg = 'Escreva seu nome e sobrenome.';
+      }
+      if (msg) { f.dataset.invalid = 'true'; e.textContent = msg; e.hidden = false; faltas.push(p); }
+      if (BLOQUEIOS[p.id] && v === BLOQUEIOS[p.id].valor && !bloqueio) bloqueio = p;
+    });
+    const fp = $('f-privacidadeOk'), ep = $('e-privacidadeOk');
+    fp.removeAttribute('data-invalid'); ep.hidden = true;
+    if (!a.privacidadeOk) { fp.dataset.invalid = 'true'; ep.textContent = 'Para enviar sua candidatura, é preciso concordar com o aviso.'; ep.hidden = false; faltas.push({ id: 'privacidadeOk', rotulo: 'Aviso de privacidade' }); }
+    return { faltas, bloqueio };
+  }
+  function renderPerguntas() {
+    if (!formMontado) montarForm();
+    preencherForm();
+    atualizarCondicionais();
+    $('formErros').hidden = true;
+  }
+  $('form').addEventListener('input', () => { lerForm(); atualizarCondicionais(); save(); });
+  $('form').addEventListener('change', () => { lerForm(); atualizarCondicionais(); save(); });
+  $('form').addEventListener('submit', ev => {
+    ev.preventDefault();
+    lerForm(); atualizarCondicionais();
+    const { faltas, bloqueio } = validar();
+    const box = $('formErros');
+    if (bloqueio) {
+      box.innerHTML = `<p><strong>Não dá para seguir agora.</strong> ${esc(BLOQUEIOS[bloqueio.id].texto)}</p>`;
+      box.hidden = false; box.scrollIntoView({ block: 'start' });
+      return;
+    }
+    if (faltas.length) {
+      box.innerHTML = `<p><strong>Faltam ${faltas.length === 1 ? '1 resposta' : faltas.length + ' respostas'}.</strong> Elas estão marcadas abaixo.</p>`;
+      box.hidden = false;
+      const alvo = faltas[0].id === 'privacidadeOk' ? $('privacidadeOk') : ($(faltas[0].id) || document.querySelector(`input[name="${faltas[0].id}"]`));
+      $('f-' + faltas[0].id).scrollIntoView({ block: 'center' });
+      if (alvo) alvo.focus({ preventScroll: true });
+      return;
+    }
+    state.perguntasOk = true;
+    state.answers.consentimentoEm = new Date().toISOString();
+    save();
+    show('minicurso');
+  });
+
+  /* ---------- Minicurso ---------- */
+  function renderMinicurso() {
+    const lista = $('modsLista');
+    lista.innerHTML = '';
+    MODULOS.forEach((m, i) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'mod-card'; b.dataset.done = state.modules[m.id] ? 'true' : 'false';
+      const feito = !!state.modules[m.id];
+      const tag = m.extra ? (feito ? 'Assistidos' : `${CONFIG.videosLoja.length} vídeos`) : (feito ? 'Concluído' : `${m.minutos} min`);
+      b.innerHTML = `<span class="n" aria-hidden="true">${m.extra ? '\u25B6\uFE0E' : i + 1}</span><span><span class="t">${esc(m.titulo)}</span><span class="d">${esc(m.resumo)}</span></span><span class="tag ${feito ? 'tag-ok' : ''}">${tag}</span>`;
+      b.setAttribute('aria-label', m.extra ? `${m.titulo}. ${feito ? 'Marcados como assistidos' : 'Para assistir'}.` : `Módulo ${i + 1}: ${m.titulo}. ${feito ? 'Concluído' : 'A fazer'}.`);
+      b.addEventListener('click', () => { abrirModulo(m.id); if (!m.extra) tocar(); });
+      lista.append(b);
+    });
+    const faltam = CORE.filter(m => !state.modules[m.id]).length;
+    const btn = $('btnIrAvaliacao');
+    btn.disabled = faltam > 0 || !state.perguntasOk;
+    $('minicursoFalta').textContent = !state.perguntasOk ? 'Antes, responda as perguntas da etapa 1.' : (faltam ? `Falta${faltam > 1 ? 'm' : ''} ${faltam} módulo${faltam > 1 ? 's' : ''} para liberar a avaliação.` : 'Tudo pronto para a avaliação.');
+  }
+  /* ---------- Aula em telas, com narração ---------- */
+  const narr = new Audio();
+  narr.preload = 'none';
+  let tocando = false, narrErro = false, narrAtual = '';
+  const moduloAtual = () => MODULOS.find(x => x.id === state.moduloAtual) || MODULOS[0];
+  const temAula = m => !m.extra && Array.isArray(AULAS[m.id]);
+  function slideIdx(m) {
+    if (!state.slides) state.slides = {};
+    return Math.min(Math.max(state.slides[m.id] || 0, 0), AULAS[m.id].length - 1);
+  }
+  const audioSrc = (m, i) => `audio/${m.id}-${String(i + 1).padStart(2, '0')}.mp3`;
+  function abrirModulo(id) {
+    state.moduloAtual = id;
+    if (!state.slides) state.slides = {};
+    if (state.modules[id]) state.slides[id] = 0;
+    show('modulo');
+  }
+  let legenda = false;
+  const fotoFalhou = {};
+  const fotoUrl = id => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=900`;
+  let dicaTimer = null;
+  function esconderDica() {
+    clearTimeout(dicaTimer);
+    if (!$('storyDica').hidden) { $('storyDica').hidden = true; state.dicaVista = true; save(); }
+  }
+  function abrirStory(m) {
+    const st = $('story');
+    st.dataset.mod = m.id;
+    st.classList.remove('pausado', 'arrastando', 'fechando');
+    $('storyFrame').style.setProperty('--dx', '0px'); $('storyFrame').style.setProperty('--dy', '0px');
+    if (st.hidden) {
+      st.hidden = false; document.documentElement.classList.add('story-open');
+      if (!state.dicaVista) { $('storyDica').hidden = false; clearTimeout(dicaTimer); dicaTimer = setTimeout(esconderDica, 9000); }
+    }
+  }
+  function fecharStory() {
+    if (!$('story').hidden) { $('story').hidden = true; document.documentElement.classList.remove('story-open'); }
+  }
+  function renderModulo() {
+    const m = moduloAtual();
+    state.moduloAtual = m.id;
+    const aula = temAula(m);
+    $('h-modulo').textContent = m.titulo;
+    $('moduloConteudo').hidden = aula;
+    $('btnConcluirModulo').hidden = aula;
+    const vbox = $('moduloVideo');
+    const src = (CONFIG.videos || {})[m.id] || '';
+    vbox.innerHTML = '';
+    if (src && /^https?:\/\//i.test(src)) {
+      vbox.innerHTML = `<a class="btn btn-secondary btn-block" href="${esc(src)}" target="_blank" rel="noopener">Assistir ao vídeo do módulo</a><p class="xs muted">O vídeo abre fora desta página.</p>`;
+      vbox.hidden = false;
+    } else if (src) {
+      vbox.innerHTML = `<video controls playsinline preload="none" src="${esc(src)}"></video>`;
+      vbox.hidden = false;
+    } else {
+      vbox.hidden = true;
+    }
+    if (aula) {
+      abrirStory(m);
+      renderSlide(0);
+      try { $('slideTitulo').focus({ preventScroll: true }); } catch (e) { }
+    } else {
+      fecharStory();
+      pararNarracao();
+      $('moduloMetaPagina').textContent = CONFIG.embedVideos ? `${CONFIG.videosLoja.length} vídeos` : `${CONFIG.videosLoja.length} vídeos · abrem no YouTube`;
+      $('moduloConteudo').innerHTML = m.extra ? videosHtml() : m.html;
+      $('btnConcluirModulo').textContent = state.modules[m.id] ? 'Voltar aos módulos' : 'Já assisti aos vídeos';
+    }
+  }
+  function mostrarFoto(sl) {
+    const img = $('storyImg');
+    $('storyArt').innerHTML = ICONS[sl.art] || '';
+    img.hidden = true; $('storyCredito').hidden = true;
+    img.onload = img.onerror = null;
+    if (!sl.img || fotoFalhou[sl.img]) { img.removeAttribute('src'); return; }
+    const url = fotoUrl(sl.img);
+    img.onload = () => { if (img.dataset.id === String(sl.img)) { img.hidden = false; $('storyCredito').hidden = false; } };
+    img.onerror = () => { fotoFalhou[sl.img] = true; img.hidden = true; $('storyCredito').hidden = true; };
+    img.dataset.id = String(sl.img);
+    img.src = url;
+    if (img.complete && img.naturalWidth) { img.hidden = false; $('storyCredito').hidden = false; }
+  }
+  function renderSlide(dir) {
+    const m = moduloAtual();
+    const lista = AULAS[m.id];
+    const i = slideIdx(m);
+    const sl = lista[i];
+    $('moduloMeta').textContent = `Módulo ${CORE.indexOf(m) + 1} · ${m.titulo} · tela ${i + 1} de ${lista.length}`;
+    $('aulaBar').innerHTML = lista.map((_, k) => `<span data-on="${k < i ? 'done' : (k === i ? 'now' : 'no')}"><i${k === i && !tocando ? ' style="width:100%"' : ''}></i></span>`).join('');
+    mostrarFoto(sl);
+    const prox = lista[i + 1];
+    if (prox && prox.img && !fotoFalhou[prox.img]) { const pre = new Image(); pre.src = fotoUrl(prox.img); }
+    const el = $('slide');
+    el.innerHTML = `<p class="eyebrow">${esc(sl.k)}</p><h3 class="story-title" id="slideTitulo" tabindex="-1">${sl.t}</h3>`
+      + `<ul class="story-pts">${sl.p.map(x => `<li>${x}</li>`).join('')}</ul>`
+      + (legenda ? `<p class="story-legenda"><strong>Legenda:</strong> ${esc(sl.n)}</p>` : '');
+    el.scrollTop = 0;
+    const fr = $('story');
+    if (dir) { fr.dataset.dir = dir > 0 ? 'prox' : 'ant'; fr.classList.remove('story-in'); void fr.offsetWidth; fr.classList.add('story-in'); }
+    $('btnSlideAnt').disabled = i === 0;
+    $('btnSlideProx').textContent = i === lista.length - 1 ? (state.modules[m.id] ? 'Fechar a aula' : 'Concluir módulo') : 'Próximo ›';
+    $('btnLegenda').setAttribute('aria-pressed', String(legenda));
+    $('btnLegenda').setAttribute('aria-label', legenda ? 'Esconder a legenda' : 'Mostrar a legenda');
+    atualizarNarr();
+  }
+  function irSlide(delta, foco) {
+    const m = moduloAtual();
+    if (!temAula(m)) return;
+    const j = slideIdx(m) + delta;
+    if (j < 0) return;
+    if (j >= AULAS[m.id].length) { pararNarracao(); concluirModulo(); return; }
+    if (delta) esconderDica();
+    state.slides[m.id] = j;
+    save();
+    renderSlide(delta);
+    if (tocando) tocar();
+    if (foco) { try { $('slideTitulo').focus({ preventScroll: true }); } catch (e) { } }
+  }
+  function concluirModulo() {
+    const era = moduloAtual();
+    const jaFeito = state.modules[era.id];
+    state.modules[era.id] = true;
+    if (era.extra || jaFeito) { show('minicurso'); return; }
+    const prox = CORE.find(m => !state.modules[m.id]);
+    if (prox) { abrirModulo(prox.id); tocar(); } else show('minicurso');
+  }
+  function atualizarNarr() {
+    const b = $('btnNarr');
+    b.setAttribute('aria-pressed', String(tocando));
+    const t = tocando ? 'Pausar a narração' : 'Ouvir a aula';
+    b.setAttribute('aria-label', t); b.title = t;
+    $('narrAviso').hidden = !narrErro;
+  }
+  function falhaNarr() {
+    tocando = false; narrErro = true; narrAtual = '';
+    atualizarNarr();
+    const fill = document.querySelector('#aulaBar span[data-on="now"] i');
+    if (fill) fill.style.width = '100%';
+  }
+  function tocar() {
+    const m = moduloAtual();
+    if (!temAula(m)) return;
+    const alvo = audioSrc(m, slideIdx(m));
+    narrErro = false; tocando = true;
+    atualizarNarr();
+    const retomar = narrAtual === alvo && !narr.ended && narr.currentTime > 0;
+    const fill = document.querySelector('#aulaBar span[data-on="now"] i');
+    if (fill && !retomar) fill.style.width = '0%';
+    if (retomar) { darPlay(); return; }
+    narrAtual = alvo;
+    if (blobUrl[alvo]) { narr.src = blobUrl[alvo]; darPlay(); }
+    else if (modoBlob) buscarBlob(alvo);
+    else { narr.src = alvo; darPlay(); }
+  }
+  // Se o player não conseguir abrir o arquivo direto, baixa o áudio e toca a cópia em memória.
+  let modoBlob = false;
+  const blobUrl = {};
+  function darPlay() {
+    try { const pr = narr.play(); if (pr && pr.catch) pr.catch(falhou); } catch (e) { falhou(e); }
+  }
+  function buscarBlob(alvo) {
+    fetch(alvo).then(r => { if (!r.ok) throw new Error('http'); return r.blob(); }).then(bl => {
+      blobUrl[alvo] = URL.createObjectURL(new Blob([bl], { type: 'audio/mpeg' }));
+      if (narrAtual === alvo && tocando) { narr.src = blobUrl[alvo]; darPlay(); }
+    }).catch(() => { blobUrl[alvo] = ''; if (narrAtual === alvo && tocando) falhaNarr(); });
+  }
+  function falhou(err) {
+    if (err && err.name === 'AbortError') return;
+    if (!tocando) return;
+    const alvo = narrAtual;
+    if (!(alvo in blobUrl)) {
+      if (!modoBlob) { modoBlob = true; buscarBlob(alvo); }
+      return;
+    }
+    falhaNarr();
+  }
+  function pararNarracao() {
+    tocando = false;
+    try { narr.pause(); } catch (e) { }
+    if ($('btnNarr')) atualizarNarr();
+  }
+  narr.addEventListener('timeupdate', () => {
+    const fill = document.querySelector('#aulaBar span[data-on="now"] i');
+    if (fill && tocando && narr.duration) fill.style.width = `${Math.min(100, (narr.currentTime / narr.duration) * 100)}%`;
+  });
+  narr.addEventListener('ended', () => {
+    if (!tocando || state.view !== 'modulo') return;
+    const m = moduloAtual();
+    const i = slideIdx(m);
+    if (i < AULAS[m.id].length - 1) { state.slides[m.id] = i + 1; save(); renderSlide(1); tocar(); }
+    else { tocando = false; narrAtual = ''; atualizarNarr(); const fill = document.querySelector('#aulaBar span[data-on="now"] i'); if (fill) fill.style.width = '100%'; }
+  });
+  narr.addEventListener('error', () => falhou());
+  $('btnNarr').addEventListener('click', () => { if (tocando) pararNarracao(); else tocar(); });
+  $('btnSlideProx').addEventListener('click', () => irSlide(1, true));
+  $('btnSlideAnt').addEventListener('click', () => irSlide(-1, true));
+  // Gestos de stories: arrastar para os lados troca de tela acompanhando o dedo; arrastar para baixo fecha;
+  // segurar pausa a narração; tocar no texto avança (lado direito) ou volta (lado esquerdo).
+  (() => {
+    const el = $('story'), fr = $('storyFrame');
+    let x0 = null, y0 = null, t0 = 0, modo = null, segurando = false, retomar = false, timer = null;
+    const mover = (dx, dy) => { fr.style.setProperty('--dx', dx + 'px'); fr.style.setProperty('--dy', dy + 'px'); };
+    const interativo = t => !!(t && t.closest && t.closest('a, input, label, .story-head button, .story-nav'));
+    // Depois de arrastar ou segurar, o toque não vira clique (preventDefault no fim do toque)
+    const engolir = e => { if (e.cancelable) e.preventDefault(); };
+    el.addEventListener('touchstart', e => {
+      if (e.touches.length > 1) { x0 = null; return; }
+      const t = e.touches[0]; x0 = t.clientX; y0 = t.clientY; t0 = Date.now(); modo = null;
+      clearTimeout(timer);
+      if (!interativo(e.target)) timer = setTimeout(() => {
+        segurando = true; el.classList.add('pausado');
+        if (tocando && !narr.paused) { retomar = true; try { narr.pause(); } catch (_) { } }
+      }, 380);
+    }, { passive: true });
+    el.addEventListener('touchmove', e => {
+      if (x0 === null || segurando) return;
+      const t = e.touches[0], dx = t.clientX - x0, dy = t.clientY - y0;
+      if (!modo && (Math.abs(dx) > 10 || Math.abs(dy) > 10)) {
+        clearTimeout(timer);
+        const corpo = $('slide');
+        if (Math.abs(dx) > Math.abs(dy)) modo = 'h';
+        else if (dy > 0 && !(corpo.contains(e.target) && corpo.scrollTop > 0)) modo = 'v';
+        else modo = 'rolar';
+        if (modo === 'h' || modo === 'v') el.classList.add('arrastando');
+      }
+      if (modo === 'h') {
+        const m = moduloAtual();
+        const borda = slideIdx(m) === 0 && dx > 0;
+        mover(borda ? dx * 0.25 : dx * 0.9, 0);
+      } else if (modo === 'v') {
+        mover(0, Math.max(0, dy));
+        el.classList.toggle('fechando', dy > 110);
+      }
+    }, { passive: true });
+    const soltar = e => {
+      clearTimeout(timer);
+      el.classList.remove('arrastando', 'fechando');
+      if (segurando) {
+        segurando = false; el.classList.remove('pausado'); engolir(e); x0 = null; modo = null;
+        if (retomar) { retomar = false; darPlay(); }
+        return;
+      }
+      if (x0 === null) return;
+      const t = e.changedTouches[0], dx = t.clientX - x0, dy = t.clientY - y0, dt = Math.max(1, Date.now() - t0);
+      mover(0, 0);
+      if (modo === 'h') {
+        engolir(e);
+        if (Math.abs(dx) > 60 || (Math.abs(dx) > 24 && Math.abs(dx) / dt > 0.45)) irSlide(dx < 0 ? 1 : -1, false);
+      } else if (modo === 'v') {
+        engolir(e);
+        if (dy > 110 || (dy > 40 && dy / dt > 0.5)) fecharAula();
+      }
+      x0 = null; modo = null;
+    };
+    el.addEventListener('touchend', soltar, { passive: false });
+    el.addEventListener('touchcancel', soltar, { passive: true });
+    $('slide').addEventListener('click', e => {
+      if (interativo(e.target)) return;
+      if (window.getSelection && String(window.getSelection())) return;
+      const r = fr.getBoundingClientRect();
+      irSlide(e.clientX - r.left < r.width * 0.3 ? -1 : 1, false);
+    });
+  })();
+  $('btnStoryFechar').addEventListener('click', () => fecharAula());
+  $('tapAnt').addEventListener('click', () => irSlide(-1, false));
+  $('tapProx').addEventListener('click', () => irSlide(1, false));
+  $('btnLegenda').addEventListener('click', () => { legenda = !legenda; renderSlide(0); });
+  document.addEventListener('keydown', e => {
+    if (state.view !== 'modulo' || $('story').hidden) return;
+    if (e.key === 'Escape') { fecharAula(); return; }
+    if (/^(INPUT|TEXTAREA|SELECT)$/.test((e.target && e.target.tagName) || '')) return;
+    if (e.key === 'ArrowRight') irSlide(1, true);
+    if (e.key === 'ArrowLeft') irSlide(-1, true);
+  });
+  $('btnConcluirModulo').addEventListener('click', concluirModulo);
+  $('btnIrAvaliacao').addEventListener('click', () => show('avaliacao'));
+
+  /* ---------- Avaliação ---------- */
+  function renderAvaliacao() {
+    $('avTotal').textContent = totalPerguntas();
+    $('avMax').textContent = CONFIG.maxTentativas;
+    const n = state.attempts.length;
+    $('avTentativas').textContent = n ? `Você já fez ${n} de ${CONFIG.maxTentativas} tentativas. Melhor nota até agora: ${melhor()} de ${state.attempts[0].total}.` : '';
+    const esgotou = n >= CONFIG.maxTentativas;
+    $('btnComecarAvaliacao').disabled = esgotou && !state.quiz;
+    $('btnComecarAvaliacao').textContent = state.quiz ? 'Continuar a avaliação' : (esgotou ? 'Tentativas esgotadas' : (n ? 'Começar nova tentativa' : 'Começar a avaliação'));
+    $('btnAvEnvio').hidden = !n || !!state.quiz;
+    if (state.quiz && state.quiz.emAndamento) mostrarQuestao(); else { $('avaliacaoIntro').hidden = false; $('avaliacaoQuestao').hidden = true; }
+  }
+  $('btnComecarAvaliacao').addEventListener('click', () => {
+    if (!state.quiz) {
+      if (state.attempts.length >= CONFIG.maxTentativas) return;
+      state.quiz = montarAvaliacao();
+    }
+    state.quiz.emAndamento = true;
+    save();
+    mostrarQuestao();
+    const h = $('qTexto'); h.setAttribute('tabindex', '-1'); h.focus();
+  });
+  function mostrarQuestao() {
+    const qz = state.quiz;
+    $('avaliacaoIntro').hidden = true;
+    $('avaliacaoQuestao').hidden = false;
+    const it = qz.itens[qz.idx];
+    const q = byId[it.id];
+    const mod = MODULOS.find(m => m.id === q.m);
+    $('qContador').textContent = `Pergunta ${qz.idx + 1} de ${qz.itens.length}`;
+    $('qTema').textContent = mod.titulo;
+    $('qBarra').style.width = `${(qz.idx / qz.itens.length) * 100}%`;
+    $('qTexto').textContent = textoPergunta(q, it.v);
+    $('qOpcoes').innerHTML = it.ordem.map((k, pos) => `<label class="opt"><input type="radio" name="resposta" id="resp-${pos}" value="${k}"><span>${esc(textoOpcao(q, k))}</span></label>`).join('');
+    $('btnResponder').disabled = true;
+    $('btnResponder').textContent = qz.idx === qz.itens.length - 1 ? 'Responder e ver o resultado' : 'Responder';
+  }
+  $('qOpcoes').addEventListener('change', () => { $('btnResponder').disabled = !document.querySelector('input[name="resposta"]:checked'); });
+  $('avaliacaoQuestao').addEventListener('submit', ev => {
+    ev.preventDefault();
+    const c = document.querySelector('input[name="resposta"]:checked');
+    if (!c) return;
+    const qz = state.quiz;
+    qz.itens[qz.idx].escolha = Number(c.value);
+    if (qz.idx < qz.itens.length - 1) {
+      qz.idx++;
+      save();
+      mostrarQuestao();
+      window.scrollTo(0, 0);
+      const h = $('qTexto'); h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true });
+    } else {
+      const r = corrigir(qz);
+      state.attempts.push({ em: new Date().toISOString(), nota: r.nota, total: r.total, por: r.por, ids: qz.itens.map(i => i.id) });
+      state.quiz = null;
+      save();
+      show('resultado');
+    }
+  });
+
+  /* ---------- Resultado ---------- */
+  function renderResultado() {
+    const t = state.attempts[state.attempts.length - 1];
+    if (!t) { show('avaliacao'); return; }
+    const n = state.attempts.length;
+    $('resTentativa').textContent = `Tentativa ${n} de ${CONFIG.maxTentativas}`;
+    $('resNota').innerHTML = `${t.nota} <small>de ${t.total} acertos</small>`;
+    const passou = t.nota >= CONFIG.notaMinima;
+    const podeTentar = n < CONFIG.maxTentativas;
+    const msg = $('resMensagem');
+    msg.className = 'note ' + (passou ? 'note-ok' : 'note-warn');
+    msg.innerHTML = passou
+      ? '<p><strong>Mandou bem.</strong> Agora é só conferir e enviar para a loja.</p>'
+      : (podeTentar
+        ? '<p><strong>Faltou pouco.</strong> Reveja os módulos marcados abaixo e tente de novo: as perguntas vão ser outras.</p>'
+        : '<p><strong>Você usou todas as tentativas.</strong> Pode enviar mesmo assim: a loja vê sua melhor nota e decide com você na conversa.</p>');
+    const lista = $('resPorModulo');
+    lista.innerHTML = '';
+    MODULOS.filter(m => (t.por[m.id] || [0, 0])[1] > 0).forEach(m => {
+      const [ok, tot] = t.por[m.id];
+      const li = document.createElement('li');
+      li.innerHTML = `<span>${esc(m.titulo)}</span><span class="v">${ok} de ${tot}</span>`;
+      const slot = document.createElement('span');
+      if (ok < tot) {
+        const b = botao('Rever', 'linkish', () => { abrirModulo(m.id); tocar(); });
+        slot.append(b);
+      }
+      li.append(slot);
+      lista.append(li);
+    });
+    const acoes = $('resAcoes');
+    acoes.innerHTML = '';
+    const enviar = botao('Seguir para o envio', passou || !podeTentar ? 'btn btn-primary btn-block' : 'btn btn-secondary btn-block', () => show('envio'));
+    if (podeTentar && !passou) acoes.append(botao('Tentar de novo com perguntas novas', 'btn btn-primary btn-block', () => show('avaliacao')));
+    acoes.append(enviar);
+    if (podeTentar && passou) acoes.append(botao('Tentar melhorar a nota', 'btn btn-ghost', () => show('avaliacao')));
+    const p = document.createElement('p');
+    p.className = 'small muted';
+    p.textContent = 'A nota ajuda a loja a te conhecer. Quem decide é uma pessoa da equipe, nunca a nota sozinha.';
+    acoes.append(p);
+  }
+
+  /* ---------- Envio ---------- */
+  function soDigitos(s) { return String(s || '').replace(/\D/g, ''); }
+  function formatarFone(d) {
+    const n = soDigitos(d).replace(/^55/, '');
+    if (n.length === 11) return `(${n.slice(0, 2)}) ${n.slice(2, 7)}-${n.slice(7)}`;
+    if (n.length === 10) return `(${n.slice(0, 2)}) ${n.slice(2, 6)}-${n.slice(6)}`;
+    return d;
+  }
+  let mensagemAtual = '';
+  // Distância em linha reta (fórmula de haversine) e uma estimativa a pé, contando ruas não retas (x1,3) a 4,8 km/h.
+  function kmEntre(a, b) {
+    const R = 6371, rad = x => x * Math.PI / 180;
+    const dLat = rad(b.lat - a.lat), dLng = rad(b.lng - a.lng);
+    const h = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
+  const temPosicao = l => typeof l.lat === 'number' && typeof l.lng === 'number';
+  const minutosAPe = km => Math.max(1, Math.round(km * 1.3 / 4.8 * 60));
+  const kmTexto = km => km < 1 ? `${Math.round(km * 1000 / 50) * 50} m` : `${km.toFixed(1).replace('.', ',')} km`;
+  function distanciaTexto(loja, km) {
+    if (!loja || typeof km !== 'number') return loja ? 'não calculada' : '';
+    return minutosAPe(km) <= 90 ? `uns ${kmTexto(km)} em linha reta (cerca de ${minutosAPe(km)} min a pé, estimativa)` : `uns ${kmTexto(km)} em linha reta`;
+  }
+  let distancias = null; // { slug: km } desta visita; a localização em si não é guardada
+  function lojasOrdenadas() {
+    const lista = CONFIG.lojas.slice();
+    if (distancias) return lista.sort((a, b) => (distancias[a.slug] ?? 1e9) - (distancias[b.slug] ?? 1e9) || a.bairro.localeCompare(b.bairro));
+    return lista.sort((a, b) => a.bairro.localeCompare(b.bairro) || a.marca.localeCompare(b.marca));
+  }
+  function renderLojas() {
+    const geoPossivel = 'geolocation' in navigator && CONFIG.lojas.some(temPosicao);
+    $('btnPerto').hidden = !geoPossivel || !!distancias;
+    $('lojaGeoTexto').hidden = !geoPossivel || !!distancias;
+    $('lojaLegenda').textContent = distancias ? 'Da mais perto para a mais longe. Para qual loja você quer mandar?' : 'Para qual loja você quer mandar?';
+    if (!state.answers.loja && lojaDoLink) state.answers.loja = lojaDoLink;
+    $('lojaOpcoes').innerHTML = lojasOrdenadas().map(l => {
+      const km = distancias ? distancias[l.slug] : undefined;
+      const det = typeof km === 'number' ? (minutosAPe(km) <= 90 ? `uns ${kmTexto(km)} · cerca de ${minutosAPe(km)} min a pé` : `uns ${kmTexto(km)}`) : (l.endereco || '');
+      return `<label class="opt"><input type="radio" name="lojaEscolha" value="${esc(l.slug)}"${state.answers.loja === l.slug ? ' checked' : ''}><span><strong>${esc(lojaRotulo(l))}</strong>${det ? `<br><span class="small muted">${esc(det)}</span>` : ''}</span></label>`;
+    }).join('');
+  }
+  $('lojaOpcoes').addEventListener('change', ev => {
+    const slug = ev.target && ev.target.value;
+    if (!lojaPor(slug)) return;
+    state.answers.loja = slug;
+    state.answers.lojaKm = distancias && typeof distancias[slug] === 'number' ? Math.round(distancias[slug] * 10) / 10 : null;
+    save(); renderEnvio(false); renderProgresso();
+  });
+  $('btnPerto').addEventListener('click', () => {
+    const st = $('lojaGeoStatus');
+    st.textContent = 'Procurando sua localização…';
+    const erro = () => { st.textContent = 'Não deu para usar a localização. Escolha a loja pela lista abaixo, pelo bairro.'; };
+    try {
+      navigator.geolocation.getCurrentPosition(pos => {
+        const eu = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        distancias = {};
+        CONFIG.lojas.filter(temPosicao).forEach(l => { distancias[l.slug] = kmEntre(eu, l); });
+        const perto = lojasOrdenadas()[0];
+        if (!state.answers.loja || !lojaPor(state.answers.loja)) state.answers.loja = perto.slug;
+        const sel = state.answers.loja;
+        state.answers.lojaKm = typeof distancias[sel] === 'number' ? Math.round(distancias[sel] * 10) / 10 : null;
+        st.textContent = `A mais perto de você é a ${lojaRotulo(perto)}.`;
+        save(); renderEnvio(); renderProgresso();
+      }, erro, { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 });
+    } catch (e) { erro(); }
+  });
+  function renderEnvio(comLojas = true) {
+    if (!state.perguntasOk) { show('perguntas'); return; }
+    if (comLojas) renderLojas();
+    const escolheu = !!lojaPor(state.answers.loja);
+    $('envioAcoes').hidden = !escolheu;
+    const dl = $('envioResumo');
+    dl.innerHTML = dadosResumo().map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v || '—')}</dd></div>`).join('');
+    mensagemAtual = montarMensagem();
+    $('envioMensagem').textContent = mensagemAtual;
+    const loja = lojaPor(state.answers.loja);
+    const num = loja ? soDigitos(loja.whatsapp) : '';
+    const link = num ? `https://wa.me/${num}?text=${encodeURIComponent(mensagemAtual)}` : `https://wa.me/?text=${encodeURIComponent(mensagemAtual)}`;
+    $('btnWhatsApp').href = link;
+    $('envioAjuda').textContent = num
+      ? `O WhatsApp abre com a mensagem pronta para a loja, no número ${formatarFone(num)}. Confira e toque em enviar. Se não abrir, copie a mensagem e mande para esse número.`
+      : 'O WhatsApp abre com a mensagem pronta. Escolha o contato da loja e toque em enviar. Se não abrir, copie a mensagem e mande para a loja.';
+    $('envioDepoisTexto').textContent = `A loja responde ${CONFIG.prazoResposta}, pelo WhatsApp. Se você for chamada(o), a conversa é presencial, na loja. Lembre: a loja nunca cobra nada.`;
+    $('envioDepois').hidden = !state.gerouMensagem || !escolheu;
+    $('envioCopiado').textContent = '';
+    $('envioMensagem').parentElement.hidden = !escolheu;
+  }
+  $('btnWhatsApp').addEventListener('click', () => { state.gerouMensagem = true; save(); renderProgresso(); $('envioDepois').hidden = false; });
+  $('btnCopiar').addEventListener('click', () => {
+    const ok = () => { $('envioCopiado').textContent = 'Mensagem copiada. Agora é só colar na conversa com a loja.'; state.gerouMensagem = true; save(); renderProgresso(); $('envioDepois').hidden = false; };
+    const fallback = () => {
+      const r = document.createRange(); r.selectNodeContents($('envioMensagem'));
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      $('envioCopiado').textContent = 'Não consegui copiar sozinho. A mensagem está selecionada: copie pelo menu do celular.';
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(mensagemAtual).then(ok, fallback);
+      else fallback();
+    } catch (e) { fallback(); }
+  });
+  (() => {
+    const b = $('btnApagar');
+    let armado = false, t = null;
+    b.addEventListener('click', () => {
+      if (!armado) { armado = true; b.textContent = 'Toque de novo para apagar'; t = setTimeout(() => { armado = false; b.textContent = 'Apagar minhas respostas deste celular'; }, 4000); return; }
+      clearTimeout(t); armado = false; b.textContent = 'Apagar minhas respostas deste celular';
+      recomecar();
+    });
+  })();
+
+  /* ---------- Equipe ---------- */
+  function renderEquipe() {
+    $('equipeLinks').innerHTML = CONFIG.lojas.map(l => `<li><span>${esc(lojaRotulo(l))}</span><span class="v">#${esc(l.slug)}</span><span></span></li>`).join('');
+    $('equipePrazo').textContent = `Responder toda candidatura ${CONFIG.prazoResposta}, mesmo quando a resposta for não.`;
+    const pend = [];
+    const semZap = CONFIG.lojas.filter(l => !l.whatsapp).map(lojaRotulo);
+    if (semZap.length) pend.push(`WhatsApp das lojas: ${semZap.join('; ')}.`);
+    const semEmpresa = CONFIG.lojas.filter(l => !l.empresa).map(lojaRotulo);
+    if (semEmpresa.length) pend.push(`Empresa responsável (para o aviso de privacidade): ${semEmpresa.join('; ')}.`);
+    const semEnd = CONFIG.lojas.filter(l => !l.endereco).map(lojaRotulo);
+    if (semEnd.length) pend.push(`Endereço: ${semEnd.join('; ')}.`);
+    const semPos = CONFIG.lojas.filter(l => !temPosicao(l)).map(lojaRotulo);
+    if (semPos.length) pend.push(`Posição no mapa (para mostrar as lojas mais perto da candidata): ${semPos.join('; ')}.`);
+    const semTitulo = CONFIG.videosLoja.filter(v => !v.titulo).length;
+    if (semTitulo) pend.push(`Título dos vídeos: ${semTitulo} de ${CONFIG.videosLoja.length} aparecem só como "Vídeo 1", "Vídeo 2".`);
+    pend.push('Um vídeo da lista original está privado no YouTube e saiu da página. Se houver outro para o lugar dele, é só mandar o link.');
+    pend.push('Vídeo curto sobre a cultura e os combinados das lojas.');
+    pend.push('Narração: hoje é uma voz sintética. Fotos: banco gratuito Pexels (no Claude aparecem desenhos no lugar).');
+    pend.push(`Lojas participantes cadastradas: ${CONFIG.lojas.length} de 13.`);
+    $('equipePendencias').innerHTML = pend.map(p => `<li>${esc(p)}</li>`).join('');
+    $('conferirResultado').innerHTML = '';
+  }
+  $('btnConferir').addEventListener('click', () => {
+    const r = conferir($('conferirTexto').value);
+    const out = $('conferirResultado');
+    if (r.ok === null) out.innerHTML = '<div class="note note-warn"><p><strong>Não encontrei os dados.</strong> Cole a mensagem inteira, com as linhas Nome, Loja, Avaliação, Enviado em e Código.</p></div>';
+    else if (r.ok) out.innerHTML = `<div class="note note-ok"><p><strong>Confere.</strong> ${esc(r.nome)} · ${esc(r.loja)}</p><p>Avaliação: ${esc(r.av)} · gerada em ${esc(r.env)}</p></div>`;
+    else out.innerHTML = '<div class="note note-warn"><p><strong>Não confere.</strong> Nome, loja, nota ou data foram alterados depois que a mensagem foi gerada. Peça para a pessoa refazer o envio pela página.</p></div>';
+  });
+  $('btnEquipe').addEventListener('click', () => { try { history.replaceState(null, '', '#equipe'); } catch (e) { } show('equipe'); });
+  $('btnSairEquipe').addEventListener('click', () => { try { history.replaceState(null, '', lojaDoLink ? '#' + lojaDoLink : location.pathname); } catch (e) { } show(state.perguntasOk ? proximaEtapa() : 'inicio'); });
+
+  document.addEventListener('click', ev => {
+    const go = ev.target.closest('[data-go]');
+    if (go) { ev.preventDefault(); show(go.dataset.go); }
+  });
+
+  /* ---------- Início ---------- */
+  function lerHash() {
+    const h = decodeURIComponent((location.hash || '').slice(1));
+    if (h === 'equipe') return 'equipe';
+    if (lojaPor(h)) lojaDoLink = h;
+    return null;
+  }
+  function start(data) {
+    const salvo = (data && data.state) || load();
+    if (salvo && typeof salvo === 'object') state = Object.assign(blank(), salvo);
+    $('footVersao').textContent = `Piloto de contratação · versão ${CONFIG.versao}`;
+    const rota = lerHash();
+    if (rota === 'equipe') { show('equipe', { semFoco: true, inicial: true }); return; }
+    const v = VIEWS.includes(state.view) && state.view !== 'equipe' ? state.view : 'inicio';
+    show(v === 'resultado' && !state.attempts.length ? 'inicio' : v, { semFoco: true, inicial: true });
+  }
+  window.addEventListener('hashchange', () => { if (lerHash() === 'equipe') show('equipe'); else renderProgresso(); });
+  window.claude?.hot?.snapshot?.(() => ({ state }));
+
+  // Funções puras expostas para teste e conferência
+  window.Estagio = { montarAvaliacao, corrigir, codigo, conferir, BANCO, MODULOS, AULAS, narr };
+
+  window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? {});
+})();
+</script>
+
+</body>
+</html>
